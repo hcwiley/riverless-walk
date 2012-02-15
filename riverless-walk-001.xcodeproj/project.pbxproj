@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		190D6F0014EC0BE400932786 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6EFF14EC0BE400932786 /* Cocoa.framework */; };
-		190D6F0A14EC0BE500932786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F0814EC0BE500932786 /* InfoPlist.strings */; };
-		190D6F1014EC0BE500932786 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F0E14EC0BE500932786 /* Credits.rtf */; };
 		190D6F1E14EC0BE500932786 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6F1D14EC0BE500932786 /* SenTestingKit.framework */; };
 		190D6F1F14EC0BE500932786 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6EFF14EC0BE400932786 /* Cocoa.framework */; };
 		190D6F2714EC0BE500932786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F2514EC0BE500932786 /* InfoPlist.strings */; };
@@ -41,11 +39,6 @@
 		190D6F0214EC0BE400932786 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		190D6F0314EC0BE400932786 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		190D6F0414EC0BE400932786 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		190D6F0714EC0BE500932786 /* riverless-walk-001-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "riverless-walk-001-Info.plist"; sourceTree = "<group>"; };
-		190D6F0914EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		190D6F0B14EC0BE500932786 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		190D6F0D14EC0BE500932786 /* riverless-walk-001-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "riverless-walk-001-Prefix.pch"; sourceTree = "<group>"; };
-		190D6F0F14EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		190D6F1C14EC0BE500932786 /* riverless-walk-001Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "riverless-walk-001Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		190D6F1D14EC0BE500932786 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		190D6F2414EC0BE500932786 /* riverless-walk-001Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "riverless-walk-001Tests-Info.plist"; sourceTree = "<group>"; };
@@ -122,10 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				190D6FBB14EC17C300932786 /* GLUT.framework */,
-				190D6F8314EC11F200932786 /* GL */,
-				190D6F8814EC11F200932786 /* GLES */,
-				190D6F8E14EC11F200932786 /* glh */,
-				190D6F9E14EC11F200932786 /* Libs */,
 				190D6F0514EC0BE400932786 /* riverless-walk-001 */,
 				190D6F2214EC0BE500932786 /* riverless-walk-001Tests */,
 				190D6EFE14EC0BE400932786 /* Frameworks */,
@@ -170,26 +159,17 @@
 		190D6F0514EC0BE400932786 /* riverless-walk-001 */ = {
 			isa = PBXGroup;
 			children = (
+				190D6F8314EC11F200932786 /* GL */,
+				190D6F8814EC11F200932786 /* GLES */,
+				190D6F8E14EC11F200932786 /* glh */,
+				190D6F9E14EC11F200932786 /* Libs */,
 				190D6F7814EC0FE200932786 /* main.cpp */,
 				190D6F7A14EC0FE200932786 /* opengles.cpp */,
 				190D6F7B14EC0FE200932786 /* opengles.h */,
 				190D6F7C14EC0FE200932786 /* SceneDrawer.cpp */,
 				190D6F7D14EC0FE200932786 /* SceneDrawer.h */,
-				190D6F0614EC0BE500932786 /* Supporting Files */,
 			);
 			path = "riverless-walk-001";
-			sourceTree = "<group>";
-		};
-		190D6F0614EC0BE500932786 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				190D6F0714EC0BE500932786 /* riverless-walk-001-Info.plist */,
-				190D6F0814EC0BE500932786 /* InfoPlist.strings */,
-				190D6F0B14EC0BE500932786 /* main.m */,
-				190D6F0D14EC0BE500932786 /* riverless-walk-001-Prefix.pch */,
-				190D6F0E14EC0BE500932786 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		190D6F2214EC0BE500932786 /* riverless-walk-001Tests */ = {
@@ -219,7 +199,8 @@
 				190D6F8614EC11F200932786 /* glut.h */,
 				190D6F8714EC11F200932786 /* wglext.h */,
 			);
-			path = GL;
+			name = GL;
+			path = ../GL;
 			sourceTree = "<group>";
 		};
 		190D6F8814EC11F200932786 /* GLES */ = {
@@ -231,7 +212,8 @@
 				190D6F8C14EC11F200932786 /* gl.h */,
 				190D6F8D14EC11F200932786 /* gl_1_0.h */,
 			);
-			path = GLES;
+			name = GLES;
+			path = ../GLES;
 			sourceTree = "<group>";
 		};
 		190D6F8E14EC11F200932786 /* glh */ = {
@@ -253,7 +235,8 @@
 				190D6F9C14EC11F200932786 /* glh_obs.h */,
 				190D6F9D14EC11F200932786 /* glh_text.h */,
 			);
-			path = glh;
+			name = glh;
+			path = ../glh;
 			sourceTree = "<group>";
 		};
 		190D6F9E14EC11F200932786 /* Libs */ = {
@@ -262,7 +245,8 @@
 				190D6F9F14EC11F200932786 /* glut32.lib */,
 				190D6FA014EC11F200932786 /* glut64.lib */,
 			);
-			path = Libs;
+			name = Libs;
+			path = ../Libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,8 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190D6F0A14EC0BE500932786 /* InfoPlist.strings in Resources */,
-				190D6F1014EC0BE500932786 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,22 +379,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		190D6F0814EC0BE500932786 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				190D6F0914EC0BE500932786 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		190D6F0E14EC0BE500932786 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				190D6F0F14EC0BE500932786 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 		190D6F2514EC0BE500932786 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
