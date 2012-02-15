@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		190D6F0014EC0BE400932786 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6EFF14EC0BE400932786 /* Cocoa.framework */; };
+		190D6F0A14EC0BE500932786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F0814EC0BE500932786 /* InfoPlist.strings */; };
+		190D6F0C14EC0BE500932786 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F0B14EC0BE500932786 /* main.m */; };
+		190D6F1014EC0BE500932786 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F0E14EC0BE500932786 /* Credits.rtf */; };
+		190D6F1314EC0BE500932786 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F1214EC0BE500932786 /* AppDelegate.m */; };
+		190D6F1614EC0BE500932786 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F1414EC0BE500932786 /* MainMenu.xib */; };
+		190D6F1E14EC0BE500932786 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6F1D14EC0BE500932786 /* SenTestingKit.framework */; };
+		190D6F1F14EC0BE500932786 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6EFF14EC0BE400932786 /* Cocoa.framework */; };
+		190D6F2714EC0BE500932786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F2514EC0BE500932786 /* InfoPlist.strings */; };
+		190D6F2A14EC0BE500932786 /* riverless_walk_001Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		190D6F2014EC0BE500932786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 190D6EF214EC0BE400932786 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 190D6EFA14EC0BE400932786;
+			remoteInfo = "riverless-walk-001";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		190D6EFB14EC0BE400932786 /* riverless-walk-001.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "riverless-walk-001.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		190D6EFF14EC0BE400932786 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		190D6F0214EC0BE400932786 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		190D6F0314EC0BE400932786 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		190D6F0414EC0BE400932786 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		190D6F0714EC0BE500932786 /* riverless-walk-001-Info.plist */ = {isa = PBXFileReference; path = "riverless-walk-001-Info.plist"; sourceTree = "<group>"; };
+		190D6F0914EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		190D6F0B14EC0BE500932786 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		190D6F0D14EC0BE500932786 /* riverless-walk-001-Prefix.pch */ = {isa = PBXFileReference; path = "riverless-walk-001-Prefix.pch"; sourceTree = "<group>"; };
+		190D6F0F14EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		190D6F1114EC0BE500932786 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		190D6F1214EC0BE500932786 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		190D6F1514EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		190D6F1C14EC0BE500932786 /* riverless-walk-001Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "riverless-walk-001Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		190D6F1D14EC0BE500932786 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		190D6F2414EC0BE500932786 /* riverless-walk-001Tests-Info.plist */ = {isa = PBXFileReference; path = "riverless-walk-001Tests-Info.plist"; sourceTree = "<group>"; };
+		190D6F2614EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		190D6F2814EC0BE500932786 /* riverless_walk_001Tests.h */ = {isa = PBXFileReference; path = riverless_walk_001Tests.h; sourceTree = "<group>"; };
+		190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = riverless_walk_001Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		190D6EF814EC0BE400932786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F0014EC0BE400932786 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190D6F1814EC0BE500932786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F1E14EC0BE500932786 /* SenTestingKit.framework in Frameworks */,
+				190D6F1F14EC0BE500932786 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		190D6EF014EC0BE400932786 = {
+			isa = PBXGroup;
+			children = (
+				190D6F0514EC0BE400932786 /* riverless-walk-001 */,
+				190D6F2214EC0BE500932786 /* riverless-walk-001Tests */,
+				190D6EFE14EC0BE400932786 /* Frameworks */,
+				190D6EFC14EC0BE400932786 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		190D6EFC14EC0BE400932786 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				190D6EFB14EC0BE400932786 /* riverless-walk-001.app */,
+				190D6F1C14EC0BE500932786 /* riverless-walk-001Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		190D6EFE14EC0BE400932786 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				190D6EFF14EC0BE400932786 /* Cocoa.framework */,
+				190D6F1D14EC0BE500932786 /* SenTestingKit.framework */,
+				190D6F0114EC0BE400932786 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		190D6F0114EC0BE400932786 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				190D6F0214EC0BE400932786 /* AppKit.framework */,
+				190D6F0314EC0BE400932786 /* CoreData.framework */,
+				190D6F0414EC0BE400932786 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		190D6F0514EC0BE400932786 /* riverless-walk-001 */ = {
+			isa = PBXGroup;
+			children = (
+				190D6F1114EC0BE500932786 /* AppDelegate.h */,
+				190D6F1214EC0BE500932786 /* AppDelegate.m */,
+				190D6F1414EC0BE500932786 /* MainMenu.xib */,
+				190D6F0614EC0BE500932786 /* Supporting Files */,
+			);
+			path = "riverless-walk-001";
+			sourceTree = "<group>";
+		};
+		190D6F0614EC0BE500932786 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				190D6F0714EC0BE500932786 /* riverless-walk-001-Info.plist */,
+				190D6F0814EC0BE500932786 /* InfoPlist.strings */,
+				190D6F0B14EC0BE500932786 /* main.m */,
+				190D6F0D14EC0BE500932786 /* riverless-walk-001-Prefix.pch */,
+				190D6F0E14EC0BE500932786 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		190D6F2214EC0BE500932786 /* riverless-walk-001Tests */ = {
+			isa = PBXGroup;
+			children = (
+				190D6F2814EC0BE500932786 /* riverless_walk_001Tests.h */,
+				190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */,
+				190D6F2314EC0BE500932786 /* Supporting Files */,
+			);
+			path = "riverless-walk-001Tests";
+			sourceTree = "<group>";
+		};
+		190D6F2314EC0BE500932786 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				190D6F2414EC0BE500932786 /* riverless-walk-001Tests-Info.plist */,
+				190D6F2514EC0BE500932786 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		190D6EFA14EC0BE400932786 /* riverless-walk-001 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190D6F2D14EC0BE500932786 /* Build configuration list for PBXNativeTarget "riverless-walk-001" */;
+			buildPhases = (
+				190D6EF714EC0BE400932786 /* Sources */,
+				190D6EF814EC0BE400932786 /* Frameworks */,
+				190D6EF914EC0BE400932786 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "riverless-walk-001";
+			productName = "riverless-walk-001";
+			productReference = 190D6EFB14EC0BE400932786 /* riverless-walk-001.app */;
+			productType = "com.apple.product-type.application";
+		};
+		190D6F1B14EC0BE500932786 /* riverless-walk-001Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190D6F3014EC0BE500932786 /* Build configuration list for PBXNativeTarget "riverless-walk-001Tests" */;
+			buildPhases = (
+				190D6F1714EC0BE500932786 /* Sources */,
+				190D6F1814EC0BE500932786 /* Frameworks */,
+				190D6F1914EC0BE500932786 /* Resources */,
+				190D6F1A14EC0BE500932786 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				190D6F2114EC0BE500932786 /* PBXTargetDependency */,
+			);
+			name = "riverless-walk-001Tests";
+			productName = "riverless-walk-001Tests";
+			productReference = 190D6F1C14EC0BE500932786 /* riverless-walk-001Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		190D6EF214EC0BE400932786 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Digital Art";
+			};
+			buildConfigurationList = 190D6EF514EC0BE400932786 /* Build configuration list for PBXProject "riverless-walk-001" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 190D6EF014EC0BE400932786;
+			productRefGroup = 190D6EFC14EC0BE400932786 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				190D6EFA14EC0BE400932786 /* riverless-walk-001 */,
+				190D6F1B14EC0BE500932786 /* riverless-walk-001Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		190D6EF914EC0BE400932786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F0A14EC0BE500932786 /* InfoPlist.strings in Resources */,
+				190D6F1014EC0BE500932786 /* Credits.rtf in Resources */,
+				190D6F1614EC0BE500932786 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190D6F1914EC0BE500932786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F2714EC0BE500932786 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		190D6F1A14EC0BE500932786 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		190D6EF714EC0BE400932786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F0C14EC0BE500932786 /* main.m in Sources */,
+				190D6F1314EC0BE500932786 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190D6F1714EC0BE500932786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190D6F2A14EC0BE500932786 /* riverless_walk_001Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		190D6F2114EC0BE500932786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 190D6EFA14EC0BE400932786 /* riverless-walk-001 */;
+			targetProxy = 190D6F2014EC0BE500932786 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		190D6F0814EC0BE500932786 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				190D6F0914EC0BE500932786 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		190D6F0E14EC0BE500932786 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				190D6F0F14EC0BE500932786 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		190D6F1414EC0BE500932786 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				190D6F1514EC0BE500932786 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		190D6F2514EC0BE500932786 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				190D6F2614EC0BE500932786 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		190D6F2B14EC0BE500932786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		190D6F2C14EC0BE500932786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		190D6F2E14EC0BE500932786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				INFOPLIST_FILE = "riverless-walk-001/riverless-walk-001-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		190D6F2F14EC0BE500932786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				INFOPLIST_FILE = "riverless-walk-001/riverless-walk-001-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		190D6F3114EC0BE500932786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/riverless-walk-001.app/Contents/MacOS/riverless-walk-001";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				INFOPLIST_FILE = "riverless-walk-001Tests/riverless-walk-001Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		190D6F3214EC0BE500932786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/riverless-walk-001.app/Contents/MacOS/riverless-walk-001";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				INFOPLIST_FILE = "riverless-walk-001Tests/riverless-walk-001Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		190D6EF514EC0BE400932786 /* Build configuration list for PBXProject "riverless-walk-001" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190D6F2B14EC0BE500932786 /* Debug */,
+				190D6F2C14EC0BE500932786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190D6F2D14EC0BE500932786 /* Build configuration list for PBXNativeTarget "riverless-walk-001" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190D6F2E14EC0BE500932786 /* Debug */,
+				190D6F2F14EC0BE500932786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		190D6F3014EC0BE500932786 /* Build configuration list for PBXNativeTarget "riverless-walk-001Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190D6F3114EC0BE500932786 /* Debug */,
+				190D6F3214EC0BE500932786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 190D6EF214EC0BE400932786 /* Project object */;
+}
