@@ -12,15 +12,19 @@
 		190D6F1F14EC0BE500932786 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6EFF14EC0BE400932786 /* Cocoa.framework */; };
 		190D6F2714EC0BE500932786 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 190D6F2514EC0BE500932786 /* InfoPlist.strings */; };
 		190D6F2A14EC0BE500932786 /* riverless_walk_001Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */; };
-		190D6F7E14EC0FE200932786 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F7814EC0FE200932786 /* main.cpp */; };
-		190D6F8014EC0FE200932786 /* opengles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F7A14EC0FE200932786 /* opengles.cpp */; };
-		190D6F8114EC0FE200932786 /* SceneDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D6F7C14EC0FE200932786 /* SceneDrawer.cpp */; };
 		190D6FB314EC171F00932786 /* libOpenNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FB114EC171F00932786 /* libOpenNI.dylib */; };
 		190D6FB414EC171F00932786 /* libOpenNI.jni.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FB214EC171F00932786 /* libOpenNI.jni.dylib */; };
 		190D6FB814EC173600932786 /* libnimCodecs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FB514EC173600932786 /* libnimCodecs.dylib */; };
 		190D6FB914EC173600932786 /* libnimMockNodes.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FB614EC173600932786 /* libnimMockNodes.dylib */; };
 		190D6FBA14EC173600932786 /* libnimRecorder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FB714EC173600932786 /* libnimRecorder.dylib */; };
 		190D6FBC14EC17C300932786 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FBB14EC17C300932786 /* GLUT.framework */; };
+		190D700C14EC1D0800932786 /* riverless-walk-001-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */; };
+		190D700F14EC1DF000932786 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D700E14EC1DF000932786 /* OpenGL.framework */; };
+		190D703414EC1F1600932786 /* glut32.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D702D14EC1F1600932786 /* glut32.lib */; };
+		190D703514EC1F1700932786 /* glut64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D702E14EC1F1600932786 /* glut64.lib */; };
+		190D703614EC1F1700932786 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D702F14EC1F1600932786 /* main.cpp */; };
+		190D703714EC1F1700932786 /* opengles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D703014EC1F1600932786 /* opengles.cpp */; };
+		190D703814EC1F1700932786 /* SceneDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D703214EC1F1600932786 /* SceneDrawer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,43 +49,56 @@
 		190D6F2614EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		190D6F2814EC0BE500932786 /* riverless_walk_001Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = riverless_walk_001Tests.h; sourceTree = "<group>"; };
 		190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = riverless_walk_001Tests.m; sourceTree = "<group>"; };
-		190D6F7814EC0FE200932786 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		190D6F7A14EC0FE200932786 /* opengles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opengles.cpp; sourceTree = "<group>"; };
-		190D6F7B14EC0FE200932786 /* opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opengles.h; sourceTree = "<group>"; };
-		190D6F7C14EC0FE200932786 /* SceneDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneDrawer.cpp; sourceTree = "<group>"; };
-		190D6F7D14EC0FE200932786 /* SceneDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDrawer.h; sourceTree = "<group>"; };
-		190D6F8414EC11F200932786 /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
-		190D6F8514EC11F200932786 /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glext.h; sourceTree = "<group>"; };
-		190D6F8614EC11F200932786 /* glut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glut.h; sourceTree = "<group>"; };
-		190D6F8714EC11F200932786 /* wglext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglext.h; sourceTree = "<group>"; };
-		190D6F8914EC11F200932786 /* egl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egl.h; sourceTree = "<group>"; };
-		190D6F8A14EC11F200932786 /* egl_1_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egl_1_0.h; sourceTree = "<group>"; };
-		190D6F8B14EC11F200932786 /* egltypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egltypes.h; sourceTree = "<group>"; };
-		190D6F8C14EC11F200932786 /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
-		190D6F8D14EC11F200932786 /* gl_1_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_1_0.h; sourceTree = "<group>"; };
-		190D6F8F14EC11F200932786 /* glh_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_array.h; sourceTree = "<group>"; };
-		190D6F9014EC11F200932786 /* glh_convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_convenience.h; sourceTree = "<group>"; };
-		190D6F9114EC11F200932786 /* glh_cube_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_cube_map.h; sourceTree = "<group>"; };
-		190D6F9214EC11F200932786 /* glh_extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_extensions.h; sourceTree = "<group>"; };
-		190D6F9314EC11F200932786 /* glh_genext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_genext.h; sourceTree = "<group>"; };
-		190D6F9414EC11F200932786 /* glh_glut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut.h; sourceTree = "<group>"; };
-		190D6F9514EC11F200932786 /* glh_glut2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut2.h; sourceTree = "<group>"; };
-		190D6F9614EC11F200932786 /* glh_glut_callfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_callfunc.h; sourceTree = "<group>"; };
-		190D6F9714EC11F200932786 /* glh_glut_replay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_replay.h; sourceTree = "<group>"; };
-		190D6F9814EC11F200932786 /* glh_glut_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_text.h; sourceTree = "<group>"; };
-		190D6F9914EC11F200932786 /* glh_interactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_interactors.h; sourceTree = "<group>"; };
-		190D6F9A14EC11F200932786 /* glh_linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_linear.h; sourceTree = "<group>"; };
-		190D6F9B14EC11F200932786 /* glh_mipmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_mipmaps.h; sourceTree = "<group>"; };
-		190D6F9C14EC11F200932786 /* glh_obs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_obs.h; sourceTree = "<group>"; };
-		190D6F9D14EC11F200932786 /* glh_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_text.h; sourceTree = "<group>"; };
-		190D6F9F14EC11F200932786 /* glut32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut32.lib; sourceTree = "<group>"; };
-		190D6FA014EC11F200932786 /* glut64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut64.lib; sourceTree = "<group>"; };
 		190D6FB114EC171F00932786 /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.dylib; sourceTree = "<group>"; };
 		190D6FB214EC171F00932786 /* libOpenNI.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.jni.dylib; sourceTree = "<group>"; };
 		190D6FB514EC173600932786 /* libnimCodecs.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimCodecs.dylib; sourceTree = "<group>"; };
 		190D6FB614EC173600932786 /* libnimMockNodes.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimMockNodes.dylib; sourceTree = "<group>"; };
 		190D6FB714EC173600932786 /* libnimRecorder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimRecorder.dylib; sourceTree = "<group>"; };
 		190D6FBB14EC17C300932786 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "riverless-walk-001-info.plist"; sourceTree = "<group>"; };
+		190D700D14EC1D7A00932786 /* riverless-walk-001-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "riverless-walk-001-Prefix.pch"; sourceTree = "<group>"; };
+		190D700E14EC1DF000932786 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		190D701214EC1F1600932786 /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
+		190D701314EC1F1600932786 /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glext.h; sourceTree = "<group>"; };
+		190D701414EC1F1600932786 /* glut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glut.h; sourceTree = "<group>"; };
+		190D701514EC1F1600932786 /* wglext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglext.h; sourceTree = "<group>"; };
+		190D701714EC1F1600932786 /* egl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egl.h; sourceTree = "<group>"; };
+		190D701814EC1F1600932786 /* egl_1_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egl_1_0.h; sourceTree = "<group>"; };
+		190D701914EC1F1600932786 /* egltypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egltypes.h; sourceTree = "<group>"; };
+		190D701A14EC1F1600932786 /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
+		190D701B14EC1F1600932786 /* gl_1_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_1_0.h; sourceTree = "<group>"; };
+		190D701D14EC1F1600932786 /* glh_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_array.h; sourceTree = "<group>"; };
+		190D701E14EC1F1600932786 /* glh_convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_convenience.h; sourceTree = "<group>"; };
+		190D701F14EC1F1600932786 /* glh_cube_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_cube_map.h; sourceTree = "<group>"; };
+		190D702014EC1F1600932786 /* glh_extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_extensions.h; sourceTree = "<group>"; };
+		190D702114EC1F1600932786 /* glh_genext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_genext.h; sourceTree = "<group>"; };
+		190D702214EC1F1600932786 /* glh_glut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut.h; sourceTree = "<group>"; };
+		190D702314EC1F1600932786 /* glh_glut2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut2.h; sourceTree = "<group>"; };
+		190D702414EC1F1600932786 /* glh_glut_callfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_callfunc.h; sourceTree = "<group>"; };
+		190D702514EC1F1600932786 /* glh_glut_replay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_replay.h; sourceTree = "<group>"; };
+		190D702614EC1F1600932786 /* glh_glut_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_glut_text.h; sourceTree = "<group>"; };
+		190D702714EC1F1600932786 /* glh_interactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_interactors.h; sourceTree = "<group>"; };
+		190D702814EC1F1600932786 /* glh_linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_linear.h; sourceTree = "<group>"; };
+		190D702914EC1F1600932786 /* glh_mipmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_mipmaps.h; sourceTree = "<group>"; };
+		190D702A14EC1F1600932786 /* glh_obs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_obs.h; sourceTree = "<group>"; };
+		190D702B14EC1F1600932786 /* glh_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_text.h; sourceTree = "<group>"; };
+		190D702D14EC1F1600932786 /* glut32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut32.lib; sourceTree = "<group>"; };
+		190D702E14EC1F1600932786 /* glut64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut64.lib; sourceTree = "<group>"; };
+		190D702F14EC1F1600932786 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		190D703014EC1F1600932786 /* opengles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opengles.cpp; sourceTree = "<group>"; };
+		190D703114EC1F1600932786 /* opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opengles.h; sourceTree = "<group>"; };
+		190D703214EC1F1600932786 /* SceneDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneDrawer.cpp; sourceTree = "<group>"; };
+		190D703314EC1F1600932786 /* SceneDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDrawer.h; sourceTree = "<group>"; };
+		190D704B14EC28C100932786 /* libXnCore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnCore.dylib; path = "usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib/libXnCore.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D704C14EC28C100932786 /* libXnDDK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDDK.dylib; path = "usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib/libXnDDK.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D704D14EC28C100932786 /* libXnDeviceFile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDeviceFile.dylib; path = "usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib/libXnDeviceFile.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D704E14EC28C100932786 /* libXnDeviceSensorV2KM.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDeviceSensorV2KM.dylib; path = "usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib/libXnDeviceSensorV2KM.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D704F14EC28C100932786 /* libXnFormats.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnFormats.dylib; path = "usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib/libXnFormats.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D705514EC295100932786 /* libXnCore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnCore.dylib; path = "usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib/libXnCore.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D705614EC295100932786 /* libXnDDK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDDK.dylib; path = "usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib/libXnDDK.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D705714EC295100932786 /* libXnDeviceFile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDeviceFile.dylib; path = "usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib/libXnDeviceFile.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D705814EC295100932786 /* libXnDeviceSensorV2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnDeviceSensorV2.dylib; path = "usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib/libXnDeviceSensorV2.dylib"; sourceTree = DEVELOPER_DIR; };
+		190D705914EC295100932786 /* libXnFormats.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXnFormats.dylib; path = "usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib/libXnFormats.dylib"; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190D700F14EC1DF000932786 /* OpenGL.framework in Frameworks */,
 				190D6FB314EC171F00932786 /* libOpenNI.dylib in Frameworks */,
 				190D6FBC14EC17C300932786 /* GLUT.framework in Frameworks */,
 				190D6F0014EC0BE400932786 /* Cocoa.framework in Frameworks */,
@@ -96,6 +114,8 @@
 				190D6FB814EC173600932786 /* libnimCodecs.dylib in Frameworks */,
 				190D6FB914EC173600932786 /* libnimMockNodes.dylib in Frameworks */,
 				190D6FBA14EC173600932786 /* libnimRecorder.dylib in Frameworks */,
+				190D703414EC1F1600932786 /* glut32.lib in Frameworks */,
+				190D703514EC1F1700932786 /* glut64.lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +134,17 @@
 		190D6EF014EC0BE400932786 = {
 			isa = PBXGroup;
 			children = (
+				190D705514EC295100932786 /* libXnCore.dylib */,
+				190D705614EC295100932786 /* libXnDDK.dylib */,
+				190D705714EC295100932786 /* libXnDeviceFile.dylib */,
+				190D705814EC295100932786 /* libXnDeviceSensorV2.dylib */,
+				190D705914EC295100932786 /* libXnFormats.dylib */,
+				190D704B14EC28C100932786 /* libXnCore.dylib */,
+				190D704C14EC28C100932786 /* libXnDDK.dylib */,
+				190D704D14EC28C100932786 /* libXnDeviceFile.dylib */,
+				190D704E14EC28C100932786 /* libXnDeviceSensorV2KM.dylib */,
+				190D704F14EC28C100932786 /* libXnFormats.dylib */,
+				190D700E14EC1DF000932786 /* OpenGL.framework */,
 				190D6FBB14EC17C300932786 /* GLUT.framework */,
 				190D6F0514EC0BE400932786 /* riverless-walk-001 */,
 				190D6F2214EC0BE500932786 /* riverless-walk-001Tests */,
@@ -159,15 +190,17 @@
 		190D6F0514EC0BE400932786 /* riverless-walk-001 */ = {
 			isa = PBXGroup;
 			children = (
-				190D6F8314EC11F200932786 /* GL */,
-				190D6F8814EC11F200932786 /* GLES */,
-				190D6F8E14EC11F200932786 /* glh */,
-				190D6F9E14EC11F200932786 /* Libs */,
-				190D6F7814EC0FE200932786 /* main.cpp */,
-				190D6F7A14EC0FE200932786 /* opengles.cpp */,
-				190D6F7B14EC0FE200932786 /* opengles.h */,
-				190D6F7C14EC0FE200932786 /* SceneDrawer.cpp */,
-				190D6F7D14EC0FE200932786 /* SceneDrawer.h */,
+				190D701114EC1F1600932786 /* GL */,
+				190D701614EC1F1600932786 /* GLES */,
+				190D701C14EC1F1600932786 /* glh */,
+				190D702C14EC1F1600932786 /* Libs */,
+				190D702F14EC1F1600932786 /* main.cpp */,
+				190D703014EC1F1600932786 /* opengles.cpp */,
+				190D703114EC1F1600932786 /* opengles.h */,
+				190D703214EC1F1600932786 /* SceneDrawer.cpp */,
+				190D703314EC1F1600932786 /* SceneDrawer.h */,
+				190D700D14EC1D7A00932786 /* riverless-walk-001-Prefix.pch */,
+				190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */,
 			);
 			path = "riverless-walk-001";
 			sourceTree = "<group>";
@@ -191,62 +224,58 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		190D6F8314EC11F200932786 /* GL */ = {
+		190D701114EC1F1600932786 /* GL */ = {
 			isa = PBXGroup;
 			children = (
-				190D6F8414EC11F200932786 /* gl.h */,
-				190D6F8514EC11F200932786 /* glext.h */,
-				190D6F8614EC11F200932786 /* glut.h */,
-				190D6F8714EC11F200932786 /* wglext.h */,
+				190D701214EC1F1600932786 /* gl.h */,
+				190D701314EC1F1600932786 /* glext.h */,
+				190D701414EC1F1600932786 /* glut.h */,
+				190D701514EC1F1600932786 /* wglext.h */,
 			);
-			name = GL;
-			path = ../GL;
+			path = GL;
 			sourceTree = "<group>";
 		};
-		190D6F8814EC11F200932786 /* GLES */ = {
+		190D701614EC1F1600932786 /* GLES */ = {
 			isa = PBXGroup;
 			children = (
-				190D6F8914EC11F200932786 /* egl.h */,
-				190D6F8A14EC11F200932786 /* egl_1_0.h */,
-				190D6F8B14EC11F200932786 /* egltypes.h */,
-				190D6F8C14EC11F200932786 /* gl.h */,
-				190D6F8D14EC11F200932786 /* gl_1_0.h */,
+				190D701714EC1F1600932786 /* egl.h */,
+				190D701814EC1F1600932786 /* egl_1_0.h */,
+				190D701914EC1F1600932786 /* egltypes.h */,
+				190D701A14EC1F1600932786 /* gl.h */,
+				190D701B14EC1F1600932786 /* gl_1_0.h */,
 			);
-			name = GLES;
-			path = ../GLES;
+			path = GLES;
 			sourceTree = "<group>";
 		};
-		190D6F8E14EC11F200932786 /* glh */ = {
+		190D701C14EC1F1600932786 /* glh */ = {
 			isa = PBXGroup;
 			children = (
-				190D6F8F14EC11F200932786 /* glh_array.h */,
-				190D6F9014EC11F200932786 /* glh_convenience.h */,
-				190D6F9114EC11F200932786 /* glh_cube_map.h */,
-				190D6F9214EC11F200932786 /* glh_extensions.h */,
-				190D6F9314EC11F200932786 /* glh_genext.h */,
-				190D6F9414EC11F200932786 /* glh_glut.h */,
-				190D6F9514EC11F200932786 /* glh_glut2.h */,
-				190D6F9614EC11F200932786 /* glh_glut_callfunc.h */,
-				190D6F9714EC11F200932786 /* glh_glut_replay.h */,
-				190D6F9814EC11F200932786 /* glh_glut_text.h */,
-				190D6F9914EC11F200932786 /* glh_interactors.h */,
-				190D6F9A14EC11F200932786 /* glh_linear.h */,
-				190D6F9B14EC11F200932786 /* glh_mipmaps.h */,
-				190D6F9C14EC11F200932786 /* glh_obs.h */,
-				190D6F9D14EC11F200932786 /* glh_text.h */,
+				190D701D14EC1F1600932786 /* glh_array.h */,
+				190D701E14EC1F1600932786 /* glh_convenience.h */,
+				190D701F14EC1F1600932786 /* glh_cube_map.h */,
+				190D702014EC1F1600932786 /* glh_extensions.h */,
+				190D702114EC1F1600932786 /* glh_genext.h */,
+				190D702214EC1F1600932786 /* glh_glut.h */,
+				190D702314EC1F1600932786 /* glh_glut2.h */,
+				190D702414EC1F1600932786 /* glh_glut_callfunc.h */,
+				190D702514EC1F1600932786 /* glh_glut_replay.h */,
+				190D702614EC1F1600932786 /* glh_glut_text.h */,
+				190D702714EC1F1600932786 /* glh_interactors.h */,
+				190D702814EC1F1600932786 /* glh_linear.h */,
+				190D702914EC1F1600932786 /* glh_mipmaps.h */,
+				190D702A14EC1F1600932786 /* glh_obs.h */,
+				190D702B14EC1F1600932786 /* glh_text.h */,
 			);
-			name = glh;
-			path = ../glh;
+			path = glh;
 			sourceTree = "<group>";
 		};
-		190D6F9E14EC11F200932786 /* Libs */ = {
+		190D702C14EC1F1600932786 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				190D6F9F14EC11F200932786 /* glut32.lib */,
-				190D6FA014EC11F200932786 /* glut64.lib */,
+				190D702D14EC1F1600932786 /* glut32.lib */,
+				190D702E14EC1F1600932786 /* glut64.lib */,
 			);
-			name = Libs;
-			path = ../Libs;
+			path = Libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190D700C14EC1D0800932786 /* riverless-walk-001-info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,9 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190D6F7E14EC0FE200932786 /* main.cpp in Sources */,
-				190D6F8014EC0FE200932786 /* opengles.cpp in Sources */,
-				190D6F8114EC0FE200932786 /* SceneDrawer.cpp in Sources */,
+				190D703614EC1F1700932786 /* main.cpp in Sources */,
+				190D703714EC1F1700932786 /* opengles.cpp in Sources */,
+				190D703814EC1F1700932786 /* SceneDrawer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,9 +481,14 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Libs\"",
+					"\"$(SRCROOT)/riverless-walk-001/Libs\"",
+					"\"$(DEVELOPER_DIR)/usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib\"/**",
+					"\"$(DEVELOPER_DIR)/usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib\"/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
+				USER_HEADER_SEARCH_PATHS = "/usr/include/ni/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -468,9 +503,14 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Libs\"",
+					"\"$(SRCROOT)/riverless-walk-001/Libs\"",
+					"\"$(DEVELOPER_DIR)/usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib\"",
+					"\"$(DEVELOPER_DIR)/usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
+				USER_HEADER_SEARCH_PATHS = "/usr/include/ni/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
