@@ -15,6 +15,29 @@
 		190D703614EC1F1700932786 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D702F14EC1F1600932786 /* main.cpp */; };
 		190D703714EC1F1700932786 /* opengles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D703014EC1F1600932786 /* opengles.cpp */; };
 		190D703814EC1F1700932786 /* SceneDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190D703214EC1F1600932786 /* SceneDrawer.cpp */; };
+		19BBAC4914EC6C5D005B801C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D700E14EC1DF000932786 /* OpenGL.framework */; };
+		19BBAC5F14EDBB7D005B801C /* SamplesConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 19BBAC5E14EDBB7D005B801C /* SamplesConfig.xml */; };
+		19BBAC6014EDBC08005B801C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190D6FBB14EC17C300932786 /* GLUT.framework */; };
+		19BBAC6114EDBC17005B801C /* glut64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAC5A14EDBA63005B801C /* glut64.lib */; };
+		19BBAD0B14EDBE01005B801C /* libXnCore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBACFB14EDBE01005B801C /* libXnCore.dylib */; };
+		19BBAD0C14EDBE01005B801C /* libXnDDK.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBACFC14EDBE01005B801C /* libXnDDK.dylib */; };
+		19BBAD0D14EDBE01005B801C /* libXnDeviceFile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBACFD14EDBE01005B801C /* libXnDeviceFile.dylib */; };
+		19BBAD0E14EDBE01005B801C /* libXnDeviceSensorV2KM.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBACFE14EDBE01005B801C /* libXnDeviceSensorV2KM.dylib */; };
+		19BBAD0F14EDBE01005B801C /* libXnFormats.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBACFF14EDBE01005B801C /* libXnFormats.dylib */; };
+		19BBAD1014EDBE01005B801C /* libXnVCNITE_1_4_1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0014EDBE01005B801C /* libXnVCNITE_1_4_1.dylib */; };
+		19BBAD1114EDBE01005B801C /* libXnVFeatures_1_4_1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0114EDBE01005B801C /* libXnVFeatures_1_4_1.dylib */; };
+		19BBAD1214EDBE01005B801C /* libXnVHandGenerator_1_4_1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0214EDBE01005B801C /* libXnVHandGenerator_1_4_1.dylib */; };
+		19BBAD1314EDBE01005B801C /* libXnVNite_1_4_1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0314EDBE01005B801C /* libXnVNite_1_4_1.dylib */; };
+		19BBAD1414EDBE01005B801C /* libXnVNITE.jni.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0414EDBE01005B801C /* libXnVNITE.jni.dylib */; };
+		19BBAD1514EDBE01005B801C /* libnimCodecs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0514EDBE01005B801C /* libnimCodecs.dylib */; };
+		19BBAD1614EDBE02005B801C /* libnimMockNodes.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0614EDBE01005B801C /* libnimMockNodes.dylib */; };
+		19BBAD1714EDBE02005B801C /* libnimRecorder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0714EDBE01005B801C /* libnimRecorder.dylib */; };
+		19BBAD1814EDBE02005B801C /* libOpenNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0814EDBE01005B801C /* libOpenNI.dylib */; };
+		19BBAD1914EDBE02005B801C /* libOpenNI.jni.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0914EDBE01005B801C /* libOpenNI.jni.dylib */; };
+		19BBAD1A14EDBE02005B801C /* libXnDeviceSensorV2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0A14EDBE01005B801C /* libXnDeviceSensorV2.dylib */; };
+		19BBAD2114EDC0FE005B801C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD2014EDC0FE005B801C /* IOKit.framework */; };
+		19BBAD2914EDC2CB005B801C /* SerialPort.c in Sources */ = {isa = PBXBuildFile; fileRef = 19BBAD2814EDC2CB005B801C /* SerialPort.c */; };
+		19BBAD2F14EDC422005B801C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD2E14EDC422005B801C /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,12 +95,34 @@
 		190D702914EC1F1600932786 /* glh_mipmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_mipmaps.h; sourceTree = "<group>"; };
 		190D702A14EC1F1600932786 /* glh_obs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_obs.h; sourceTree = "<group>"; };
 		190D702B14EC1F1600932786 /* glh_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_text.h; sourceTree = "<group>"; };
-		190D702E14EC1F1600932786 /* glut64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut64.lib; sourceTree = "<group>"; };
 		190D702F14EC1F1600932786 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		190D703014EC1F1600932786 /* opengles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opengles.cpp; sourceTree = "<group>"; };
 		190D703114EC1F1600932786 /* opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opengles.h; sourceTree = "<group>"; };
 		190D703214EC1F1600932786 /* SceneDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneDrawer.cpp; sourceTree = "<group>"; };
 		190D703314EC1F1600932786 /* SceneDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDrawer.h; sourceTree = "<group>"; };
+		19BBAC5714EDB992005B801C /* SamplesConfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SamplesConfig.xml; sourceTree = "<group>"; };
+		19BBAC5914EDBA63005B801C /* glut32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut32.lib; sourceTree = "<group>"; };
+		19BBAC5A14EDBA63005B801C /* glut64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = glut64.lib; sourceTree = "<group>"; };
+		19BBAC5E14EDBB7D005B801C /* SamplesConfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SamplesConfig.xml; sourceTree = "<group>"; };
+		19BBACFB14EDBE01005B801C /* libXnCore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnCore.dylib; sourceTree = "<group>"; };
+		19BBACFC14EDBE01005B801C /* libXnDDK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnDDK.dylib; sourceTree = "<group>"; };
+		19BBACFD14EDBE01005B801C /* libXnDeviceFile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnDeviceFile.dylib; sourceTree = "<group>"; };
+		19BBACFE14EDBE01005B801C /* libXnDeviceSensorV2KM.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnDeviceSensorV2KM.dylib; sourceTree = "<group>"; };
+		19BBACFF14EDBE01005B801C /* libXnFormats.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnFormats.dylib; sourceTree = "<group>"; };
+		19BBAD0014EDBE01005B801C /* libXnVCNITE_1_4_1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnVCNITE_1_4_1.dylib; sourceTree = "<group>"; };
+		19BBAD0114EDBE01005B801C /* libXnVFeatures_1_4_1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnVFeatures_1_4_1.dylib; sourceTree = "<group>"; };
+		19BBAD0214EDBE01005B801C /* libXnVHandGenerator_1_4_1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnVHandGenerator_1_4_1.dylib; sourceTree = "<group>"; };
+		19BBAD0314EDBE01005B801C /* libXnVNite_1_4_1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnVNite_1_4_1.dylib; sourceTree = "<group>"; };
+		19BBAD0414EDBE01005B801C /* libXnVNITE.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnVNITE.jni.dylib; sourceTree = "<group>"; };
+		19BBAD0514EDBE01005B801C /* libnimCodecs.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimCodecs.dylib; sourceTree = "<group>"; };
+		19BBAD0614EDBE01005B801C /* libnimMockNodes.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimMockNodes.dylib; sourceTree = "<group>"; };
+		19BBAD0714EDBE01005B801C /* libnimRecorder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimRecorder.dylib; sourceTree = "<group>"; };
+		19BBAD0814EDBE01005B801C /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.dylib; sourceTree = "<group>"; };
+		19BBAD0914EDBE01005B801C /* libOpenNI.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.jni.dylib; sourceTree = "<group>"; };
+		19BBAD0A14EDBE01005B801C /* libXnDeviceSensorV2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnDeviceSensorV2.dylib; sourceTree = "<group>"; };
+		19BBAD2014EDC0FE005B801C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		19BBAD2814EDC2CB005B801C /* SerialPort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SerialPort.c; sourceTree = "<group>"; };
+		19BBAD2E14EDC422005B801C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +130,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19BBAD2F14EDC422005B801C /* CoreFoundation.framework in Frameworks */,
+				19BBAD2114EDC0FE005B801C /* IOKit.framework in Frameworks */,
+				19BBAC6114EDBC17005B801C /* glut64.lib in Frameworks */,
+				19BBAC6014EDBC08005B801C /* GLUT.framework in Frameworks */,
+				19BBAC4914EC6C5D005B801C /* OpenGL.framework in Frameworks */,
+				19BBAD0B14EDBE01005B801C /* libXnCore.dylib in Frameworks */,
+				19BBAD0C14EDBE01005B801C /* libXnDDK.dylib in Frameworks */,
+				19BBAD0D14EDBE01005B801C /* libXnDeviceFile.dylib in Frameworks */,
+				19BBAD0E14EDBE01005B801C /* libXnDeviceSensorV2KM.dylib in Frameworks */,
+				19BBAD0F14EDBE01005B801C /* libXnFormats.dylib in Frameworks */,
+				19BBAD1014EDBE01005B801C /* libXnVCNITE_1_4_1.dylib in Frameworks */,
+				19BBAD1114EDBE01005B801C /* libXnVFeatures_1_4_1.dylib in Frameworks */,
+				19BBAD1214EDBE01005B801C /* libXnVHandGenerator_1_4_1.dylib in Frameworks */,
+				19BBAD1314EDBE01005B801C /* libXnVNite_1_4_1.dylib in Frameworks */,
+				19BBAD1414EDBE01005B801C /* libXnVNITE.jni.dylib in Frameworks */,
+				19BBAD1514EDBE01005B801C /* libnimCodecs.dylib in Frameworks */,
+				19BBAD1614EDBE02005B801C /* libnimMockNodes.dylib in Frameworks */,
+				19BBAD1714EDBE02005B801C /* libnimRecorder.dylib in Frameworks */,
+				19BBAD1814EDBE02005B801C /* libOpenNI.dylib in Frameworks */,
+				19BBAD1914EDBE02005B801C /* libOpenNI.jni.dylib in Frameworks */,
+				19BBAD1A14EDBE02005B801C /* libXnDeviceSensorV2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +169,9 @@
 		190D6EF014EC0BE400932786 = {
 			isa = PBXGroup;
 			children = (
+				19BBAD2E14EDC422005B801C /* CoreFoundation.framework */,
+				19BBAD2014EDC0FE005B801C /* IOKit.framework */,
+				19BBAC5D14EDBB7D005B801C /* Config */,
 				190D700E14EC1DF000932786 /* OpenGL.framework */,
 				190D6FBB14EC17C300932786 /* GLUT.framework */,
 				190D6F0514EC0BE400932786 /* riverless-walk-001 */,
@@ -149,6 +218,22 @@
 		190D6F0514EC0BE400932786 /* riverless-walk-001 */ = {
 			isa = PBXGroup;
 			children = (
+				19BBACFB14EDBE01005B801C /* libXnCore.dylib */,
+				19BBACFC14EDBE01005B801C /* libXnDDK.dylib */,
+				19BBACFD14EDBE01005B801C /* libXnDeviceFile.dylib */,
+				19BBACFE14EDBE01005B801C /* libXnDeviceSensorV2KM.dylib */,
+				19BBACFF14EDBE01005B801C /* libXnFormats.dylib */,
+				19BBAD0014EDBE01005B801C /* libXnVCNITE_1_4_1.dylib */,
+				19BBAD0114EDBE01005B801C /* libXnVFeatures_1_4_1.dylib */,
+				19BBAD0214EDBE01005B801C /* libXnVHandGenerator_1_4_1.dylib */,
+				19BBAD0314EDBE01005B801C /* libXnVNite_1_4_1.dylib */,
+				19BBAD0414EDBE01005B801C /* libXnVNITE.jni.dylib */,
+				19BBAD0514EDBE01005B801C /* libnimCodecs.dylib */,
+				19BBAD0614EDBE01005B801C /* libnimMockNodes.dylib */,
+				19BBAD0714EDBE01005B801C /* libnimRecorder.dylib */,
+				19BBAD0814EDBE01005B801C /* libOpenNI.dylib */,
+				19BBAD0914EDBE01005B801C /* libOpenNI.jni.dylib */,
+				19BBAD0A14EDBE01005B801C /* libXnDeviceSensorV2.dylib */,
 				190D701114EC1F1600932786 /* GL */,
 				190D701614EC1F1600932786 /* GLES */,
 				190D701C14EC1F1600932786 /* glh */,
@@ -160,6 +245,8 @@
 				190D703314EC1F1600932786 /* SceneDrawer.h */,
 				190D700D14EC1D7A00932786 /* riverless-walk-001-Prefix.pch */,
 				190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */,
+				19BBAC5714EDB992005B801C /* SamplesConfig.xml */,
+				19BBAD2814EDC2CB005B801C /* SerialPort.c */,
 			);
 			path = "riverless-walk-001";
 			sourceTree = "<group>";
@@ -231,9 +318,18 @@
 		190D702C14EC1F1600932786 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				190D702E14EC1F1600932786 /* glut64.lib */,
+				19BBAC5914EDBA63005B801C /* glut32.lib */,
+				19BBAC5A14EDBA63005B801C /* glut64.lib */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		19BBAC5D14EDBB7D005B801C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				19BBAC5E14EDBB7D005B801C /* SamplesConfig.xml */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +339,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 190D6F2D14EC0BE500932786 /* Build configuration list for PBXNativeTarget "riverless-walk-001" */;
 			buildPhases = (
+				190D6EF914EC0BE400932786 /* Resources */,
 				190D6EF714EC0BE400932786 /* Sources */,
 				190D6EF814EC0BE400932786 /* Frameworks */,
-				190D6EF914EC0BE400932786 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -308,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				190D700C14EC1D0800932786 /* riverless-walk-001-info.plist in Resources */,
+				19BBAC5F14EDBB7D005B801C /* SamplesConfig.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +439,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190D703714EC1F1700932786 /* opengles.cpp in Sources */,
 				190D703614EC1F1700932786 /* main.cpp in Sources */,
+				190D703714EC1F1700932786 /* opengles.cpp in Sources */,
 				190D703814EC1F1700932786 /* SceneDrawer.cpp in Sources */,
+				19BBAD2914EDC2CB005B801C /* SerialPort.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +481,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -394,7 +493,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -404,9 +503,10 @@
 					"/usr/include/ni/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -415,12 +515,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -430,9 +531,10 @@
 					"/usr/include/ni/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -441,8 +543,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
 					"/usr/include/nite/**",
@@ -457,10 +561,13 @@
 					"\"$(SRCROOT)/riverless-walk-001/Libs\"/**",
 					"\"$(DEVELOPER_DIR)/usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib\"/**",
 					"\"$(DEVELOPER_DIR)/usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib\"/**",
-					"\"$(DEVELOPER_DIR)/usr/nite/Bin\"/**",
+					"\"$(SRCROOT)/riverless-walk-001/Libs\"/**",
 					"\"$(SRCROOT)/riverless-walk-001/Libs\"",
+					"\"$(SRCROOT)/riverless-walk-001\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					/usr/lib/libnimCodecs.dylib,
 					/usr/lib/libnimMockNodes.dylib,
@@ -470,7 +577,7 @@
 					/usr/lib/libXnVHandGenerator_1_4_1.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 				STRIP_INSTALLED_PRODUCT = NO;
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
 				WRAPPER_EXTENSION = app;
@@ -482,8 +589,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
 					"/usr/include/nite/**",
 					"/usr/include/ni/**",
@@ -497,9 +606,11 @@
 					"\"$(DEVELOPER_DIR)/usr/SensorKinect/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.25/Lib\"",
 					"\"$(DEVELOPER_DIR)/usr/PrimeSense-Sensor/Platform/Linux/Redist/Sensor-Bin-MacOSX-v5.1.0.41/Lib\"",
 					"\"$(DEVELOPER_DIR)/usr/nite/Bin\"",
+					"\"$(SRCROOT)/riverless-walk-001\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					/usr/lib/libnimCodecs.dylib,
 					/usr/lib/libnimMockNodes.dylib,
@@ -509,7 +620,7 @@
 					/usr/lib/libXnVHandGenerator_1_4_1.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 				STRIP_INSTALLED_PRODUCT = NO;
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
 				WRAPPER_EXTENSION = app;
