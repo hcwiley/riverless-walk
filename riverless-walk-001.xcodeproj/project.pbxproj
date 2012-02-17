@@ -61,11 +61,6 @@
 		190D6F2614EC0BE500932786 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		190D6F2814EC0BE500932786 /* riverless_walk_001Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = riverless_walk_001Tests.h; sourceTree = "<group>"; };
 		190D6F2914EC0BE500932786 /* riverless_walk_001Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = riverless_walk_001Tests.m; sourceTree = "<group>"; };
-		190D6FB114EC171F00932786 /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.dylib; sourceTree = "<group>"; };
-		190D6FB214EC171F00932786 /* libOpenNI.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.jni.dylib; sourceTree = "<group>"; };
-		190D6FB514EC173600932786 /* libnimCodecs.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimCodecs.dylib; sourceTree = "<group>"; };
-		190D6FB614EC173600932786 /* libnimMockNodes.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimMockNodes.dylib; sourceTree = "<group>"; };
-		190D6FB714EC173600932786 /* libnimRecorder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnimRecorder.dylib; sourceTree = "<group>"; };
 		190D6FBB14EC17C300932786 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "riverless-walk-001-info.plist"; sourceTree = "<group>"; };
 		190D700D14EC1D7A00932786 /* riverless-walk-001-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "riverless-walk-001-Prefix.pch"; sourceTree = "<group>"; };
@@ -191,11 +186,6 @@
 		190D6EFE14EC0BE400932786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				190D6FB514EC173600932786 /* libnimCodecs.dylib */,
-				190D6FB614EC173600932786 /* libnimMockNodes.dylib */,
-				190D6FB714EC173600932786 /* libnimRecorder.dylib */,
-				190D6FB114EC171F00932786 /* libOpenNI.dylib */,
-				190D6FB214EC171F00932786 /* libOpenNI.jni.dylib */,
 				190D6EFF14EC0BE400932786 /* Cocoa.framework */,
 				190D6F1D14EC0BE500932786 /* SenTestingKit.framework */,
 				190D6F0114EC0BE400932786 /* Other Frameworks */,
