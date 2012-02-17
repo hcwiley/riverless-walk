@@ -39,8 +39,10 @@
                  -->
                 
 				<!-- Uncomment to override global mirror
-                 <Mirror on="false" /> 
                  -->
+                 <mirror on="false" /> 
+                <Cropping enabled="true" xOffset="28" yOffset="28" xSize="200" ySize="160" />
+                 
 			</Configuration>
 		</Node>
 		

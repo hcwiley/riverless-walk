@@ -150,7 +150,8 @@ void XN_CALLBACK_TYPE User_NewUser(xn::UserGenerator& generator, XnUserID nId, v
         dir = "0";
     else
         dir = "5";
-    write(fileDescriptor, dir, 1);
+    write(fileDescriptor, dir, 2);
+    printf("dir: is %s\n", dir);
 	// New user found
 	if (g_bNeedPose)
 	{
@@ -159,7 +160,7 @@ void XN_CALLBACK_TYPE User_NewUser(xn::UserGenerator& generator, XnUserID nId, v
 	else
 	{
 		g_UserGenerator.GetSkeletonCap().RequestCalibration(nId, TRUE);
-	}
+    }
 }
 // Callback: An existing user was lost
 void XN_CALLBACK_TYPE User_LostUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie)
@@ -289,6 +290,9 @@ void glutDisplay (void)
 		// Process the data
 		g_DepthGenerator.GetMetaData(depthMD);
 		g_UserGenerator.GetUserPixels(0, sceneMD);
+        XnSkeletonJointPosition Head;
+        g_UserGenerator.GetSkeletonCap().GetSkeletonJointPosition(0, XN_SKEL_HEAD, Head);
+        printf("%d: (%f,%f,%f)[%f]\n", 0, Head.position.X, Head.position.Y, Head.position.Z, Head.fConfidence);
 		DrawDepthMap(depthMD, sceneMD);
 
 #ifndef USE_GLES
@@ -390,12 +394,11 @@ int main(int argc, char **argv)
     else {
         printf("Could not initialize modem.\n");
     }
-    dir = "0";
-    char* bufPtr = new char[5];
-    int bits = read(fileDescriptor, bufPtr, 4);
-    printf("read in %d bits\n", bits);
+    dir = "5";
+    char* bufPtr = new char[11];
+    int bits = read(fileDescriptor, bufPtr, 10);
     while(bits < 1){
-        bits = read(fileDescriptor, bufPtr, 4);
+        bits = read(fileDescriptor, bufPtr, 10);
         printf("trying to read...\n");
     }
     printf("read in %d bits\n", bits);
@@ -415,7 +418,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-        printf("no args");
+        printf("no args\n");
 		xn::EnumerationErrors errors;
 		nRetVal = g_Context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
 		if (nRetVal == XN_STATUS_NO_NODE_PRESENT)
@@ -508,7 +511,7 @@ int main(int argc, char **argv)
 	nRetVal = g_Context.StartGeneratingAll();
 	CHECK_RC(nRetVal, "StartGenerating");
     
-    printf("bout to fall into the main loop");
+    printf("bout to fall into the main loop\n");
 
 #ifndef USE_GLES
 	glInit(&argc, argv);
@@ -539,7 +542,7 @@ int main(int argc, char **argv)
 // Return the file descriptor associated with the device.
 static int OpenSerialPort(const char *bsdPath)
 {
-    int				fileDescriptor = -1;
+    fileDescriptor = -1;
     int				handshake;
     struct termios	options;
     
@@ -569,14 +572,14 @@ static int OpenSerialPort(const char *bsdPath)
     
     // Now that the device is open, clear the O_NONBLOCK flag so subsequent I/O will block.
     // See fcntl(2) ("man 2 fcntl") for details.
-    
+    /*
     if (fcntl(fileDescriptor, F_SETFL, 0) == -1)
     {
         printf("Error clearing O_NONBLOCK %s - %s(%d).\n",
                bsdPath, strerror(errno), errno);
         exit(1);
     }
-    
+    */
     // Get the current options and save them so we can restore the default settings later.
     if (tcgetattr(fileDescriptor, &gOriginalTTYAttrs) == -1)
     {
@@ -608,8 +611,8 @@ static int OpenSerialPort(const char *bsdPath)
     
     // The baud rate, word length, and handshake options can be set as follows:
     
-    cfsetspeed(&options, B19200);		// Set 19200 baud    
-    options.c_cflag |= (CS7 	   | 	// Use 7 bit words
+    cfsetspeed(&options, B19200);		// Set 9600 baud    
+    options.c_cflag |= (CS5 	   | 	// Use 7 bit words
 						PARENB	   | 	// Parity enable (even parity if PARODD not also set)
 						CCTS_OFLOW | 	// CTS flow control of output
 						CRTS_IFLOW);	// RTS flow control of input
@@ -620,7 +623,7 @@ static int OpenSerialPort(const char *bsdPath)
 	// ultimately determines which baud rates can be used. This ioctl sets both the input
 	// and output speed. 
 	
-	speed_t speed = 14400; // Set 14400 baud
+	speed_t speed = 19200; // Set 14400 baud
     if (ioctl(fileDescriptor, IOSSIOSPEED, &speed) == -1)
     {
         printf("Error calling ioctl(..., IOSSIOSPEED, ...) %s - %s(%d).\n",
@@ -643,8 +646,6 @@ static int OpenSerialPort(const char *bsdPath)
                bsdPath, strerror(errno), errno);
         exit(1);
     }
-    return fileDescriptor;
-    
     // To set the modem handshake lines, use the following ioctls.
     // See tty(4) ("man 4 tty") and ioctl(2) ("man 2 ioctl") for details.
     
@@ -677,7 +678,6 @@ static int OpenSerialPort(const char *bsdPath)
         printf("Error getting handshake lines %s - %s(%d).\n",
                bsdPath, strerror(errno), errno);
     }
-    
     printf("Handshake lines currently set to %d\n", handshake);
 	
 #if defined(MAC_OS_X_VERSION_10_3) && (MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_3)
