@@ -22,13 +22,13 @@
 //---------------------------------------------------------------------------
 // Includes
 //---------------------------------------------------------------------------
+#include <stdio.h>
 #include <XnOpenNI.h>
 #include <XnCodecIDs.h>
 #include <XnCppWrapper.h>
 #include "SceneDrawer.h"
 #include <XnPropNames.h>
 #include <errno.h>
-#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -72,16 +72,16 @@ XnBool g_bPrintState = TRUE;
 // undefine the following macro.
 #define LOCAL_ECHO
 
-#define kATCommandString	"AT\r"
+#define kATCommandString	"0"
 
 #ifdef LOCAL_ECHO
-#define kOKResponseString	"AT\r\r\nOK\r\n"
+#define kOKResponseString	"0"
 #else
 #define kOKResponseString	"\r\nOK\r\n"
 #endif
 
 enum {
-    kNumRetries = 3
+    kNumRetries = 1
 };
 
 static struct termios gOriginalTTYAttrs;
@@ -112,10 +112,12 @@ static EGLContext context = EGL_NO_CONTEXT;
 #endif
 
 static int OpenSerialPort(const char *bsdPath);
-static char *LogString(char *str);
+static char* LogString(char *str);
 static Boolean InitializeModem(int fileDescriptor);
 static void CloseSerialPort(int fileDescriptor);
 
+static int fileDescriptor;
+static char* dir;
 
 XnBool g_bPause = false;
 XnBool g_bRecord = false;
@@ -133,7 +135,8 @@ void CleanupExit()
 	g_UserGenerator.Release();
 	g_Player.Release();
 	g_Context.Release();
-
+    CloseSerialPort(fileDescriptor);
+    printf("Modem port closed.\n");
 	exit (1);
 }
 
@@ -143,6 +146,11 @@ void XN_CALLBACK_TYPE User_NewUser(xn::UserGenerator& generator, XnUserID nId, v
 	XnUInt32 epochTime = 0;
 	xnOSGetEpochTime(&epochTime);
 	printf("%d New User %d\n", epochTime, nId);
+    if(dir == "5")
+        dir = "0";
+    else
+        dir = "5";
+    write(fileDescriptor, dir, 1);
 	// New user found
 	if (g_bNeedPose)
 	{
@@ -369,7 +377,6 @@ void glInit (int * pargc, char ** argv)
 int main(int argc, char **argv)
 {
 	XnStatus nRetVal = XN_STATUS_OK;
-    int fileDescriptor;
     fileDescriptor = OpenSerialPort("/dev/tty.usbmodem1a21");
     if (-1 == fileDescriptor)
     {
@@ -383,6 +390,18 @@ int main(int argc, char **argv)
     else {
         printf("Could not initialize modem.\n");
     }
+    dir = "0";
+    char* bufPtr = new char[5];
+    int bits = read(fileDescriptor, bufPtr, 4);
+    printf("read in %d bits\n", bits);
+    while(bits < 1){
+        bits = read(fileDescriptor, bufPtr, 4);
+        printf("trying to read...\n");
+    }
+    printf("read in %d bits\n", bits);
+    printf("%s\n", bufPtr);
+    write(fileDescriptor, dir, 1);
+    printf("wrote out to the board\n");
 	if (argc > 1)
 	{
 		nRetVal = g_Context.Init();
@@ -488,6 +507,8 @@ int main(int argc, char **argv)
 
 	nRetVal = g_Context.StartGeneratingAll();
 	CHECK_RC(nRetVal, "StartGenerating");
+    
+    printf("bout to fall into the main loop");
 
 #ifndef USE_GLES
 	glInit(&argc, argv);
@@ -622,6 +643,7 @@ static int OpenSerialPort(const char *bsdPath)
                bsdPath, strerror(errno), errno);
         exit(1);
     }
+    return fileDescriptor;
     
     // To set the modem handshake lines, use the following ioctls.
     // See tty(4) ("man 4 tty") and ioctl(2) ("man 2 ioctl") for details.
@@ -694,6 +716,7 @@ error:
 // Return true if successful, otherwise false.
 static Boolean InitializeModem(int fileDescriptor)
 {
+    return true;
     char		buffer[256];	// Input buffer
     char		*bufPtr;		// Current char in buffer
     ssize_t		numBytes;		// Number of bytes read or written
@@ -705,7 +728,9 @@ static Boolean InitializeModem(int fileDescriptor)
         printf("Try #%d\n", tries);
         
         // Send an AT command to the modem
-        numBytes = write(fileDescriptor, kATCommandString, strlen(kATCommandString));
+        numBytes = write(fileDescriptor, "0", 1);
+        
+        printf("wrote to it..");
         
 		if (numBytes == -1)
 		{
@@ -783,5 +808,63 @@ void CloseSerialPort(int fileDescriptor)
     }
     
     close(fileDescriptor);
+}
+// Replace non-printable characters in str with '\'-escaped equivalents.
+// This function is used for convenient logging of data traffic.
+static char *LogString(char *str)
+{
+    static char     buf[2048];
+    char            *ptr = buf;
+    int             i;
+    
+    *ptr = '\0';
+    
+    while (*str)
+	{
+		if (isprint(*str))
+		{
+			*ptr++ = *str++;
+		}
+		else {
+			switch(*str)
+			{
+				case ' ':
+					*ptr++ = *str;
+					break;
+                    
+				case 27:
+					*ptr++ = '\\';
+					*ptr++ = 'e';
+					break;
+                    
+				case '\t':
+					*ptr++ = '\\';
+					*ptr++ = 't';
+					break;
+                    
+				case '\n':
+					*ptr++ = '\\';
+					*ptr++ = 'n';
+					break;
+                    
+				case '\r':
+					*ptr++ = '\\';
+					*ptr++ = 'r';
+					break;
+                    
+				default:
+					i = *str;
+					(void)sprintf(ptr, "\\%03o", i);
+					ptr += 4;
+					break;
+			}
+            
+			str++;
+		}
+        
+		*ptr = '\0';
+	}
+    
+    return buf;
 }
 
