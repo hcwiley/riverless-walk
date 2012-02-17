@@ -36,7 +36,6 @@
 		19BBAD1914EDBE02005B801C /* libOpenNI.jni.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0914EDBE01005B801C /* libOpenNI.jni.dylib */; };
 		19BBAD1A14EDBE02005B801C /* libXnDeviceSensorV2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD0A14EDBE01005B801C /* libXnDeviceSensorV2.dylib */; };
 		19BBAD2114EDC0FE005B801C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD2014EDC0FE005B801C /* IOKit.framework */; };
-		19BBAD2914EDC2CB005B801C /* SerialPort.c in Sources */ = {isa = PBXBuildFile; fileRef = 19BBAD2814EDC2CB005B801C /* SerialPort.c */; };
 		19BBAD2F14EDC422005B801C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBAD2E14EDC422005B801C /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,7 +120,6 @@
 		19BBAD0914EDBE01005B801C /* libOpenNI.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI.jni.dylib; sourceTree = "<group>"; };
 		19BBAD0A14EDBE01005B801C /* libXnDeviceSensorV2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libXnDeviceSensorV2.dylib; sourceTree = "<group>"; };
 		19BBAD2014EDC0FE005B801C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		19BBAD2814EDC2CB005B801C /* SerialPort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SerialPort.c; sourceTree = "<group>"; };
 		19BBAD2E14EDC422005B801C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -246,7 +244,6 @@
 				190D700D14EC1D7A00932786 /* riverless-walk-001-Prefix.pch */,
 				190D700B14EC1D0800932786 /* riverless-walk-001-info.plist */,
 				19BBAC5714EDB992005B801C /* SamplesConfig.xml */,
-				19BBAD2814EDC2CB005B801C /* SerialPort.c */,
 			);
 			path = "riverless-walk-001";
 			sourceTree = "<group>";
@@ -442,7 +439,6 @@
 				190D703614EC1F1700932786 /* main.cpp in Sources */,
 				190D703714EC1F1700932786 /* opengles.cpp in Sources */,
 				190D703814EC1F1700932786 /* SceneDrawer.cpp in Sources */,
-				19BBAD2914EDC2CB005B801C /* SerialPort.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +542,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
 					"/usr/include/nite/**",
@@ -592,7 +588,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "riverless-walk-001/riverless-walk-001-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
 					"/usr/include/nite/**",
 					"/usr/include/ni/**",
