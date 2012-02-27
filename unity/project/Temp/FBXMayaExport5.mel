@@ -1,0 +1,23 @@
+print "Starting maya loading and fbx conversion \n";
+	
+if (`file -q -exists "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Assets/from_abstraction.mb"`)
+{		
+	file -o "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Assets/from_abstraction.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+
+system ("rm \"/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/CommandPipe\"");
+
+$donepipeKill = `fopen "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;
