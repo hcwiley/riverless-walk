@@ -1,13 +1,13 @@
 while (1)
 {	
-	if (`filetest -r "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/CommandPipe"`)
+	if (`filetest -r "/Users/hcwiley/art/virtual/riverless-walk/unity/project/Temp/CommandPipe"`)
 	{
 		$exportNormals = 0;
 		$exportTangents = 0;
 		$bakeCommand = "";
 	
 		// Parse settings
-		$waitpipe = `fopen "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/CommandPipe" "r"`;
+		$waitpipe = `fopen "/Users/hcwiley/art/virtual/riverless-walk/unity/project/Temp/CommandPipe" "r"`;
 		$filename = `fgetline $waitpipe`;
 		
 		for ($i = 0; $i < 3; ++$i) 
@@ -136,16 +136,16 @@ while (1)
 				FBXExportShowUI -v false;
 
 				print "Before fbx export\n";
-				FBXExport -f "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/ExportedFBXFile.fbx";
+				FBXExport -f "/Users/hcwiley/art/virtual/riverless-walk/unity/project/Temp/ExportedFBXFile.fbx";
 				print "after fbx export\n";
 			}
 			else
 				print "Could not open Maya file.";
 
 			// TODO: We should use sysFile, so we don't have to have two separate mel scripts for OSX/Windows
-			system ("rm \"/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/CommandPipe\"");
+			system ("rm \"/Users/hcwiley/art/virtual/riverless-walk/unity/project/Temp/CommandPipe\"");
 
-			$donepipe = `fopen "/Users/hcwiley/art/virtual/riverless_walk/unity/project/Temp/SyncPipe" "w"`;
+			$donepipe = `fopen "/Users/hcwiley/art/virtual/riverless-walk/unity/project/Temp/SyncPipe" "w"`;
 			fwrite $donepipe "Done";
 			fclose $donepipe;
 			print "Finished maya loading and fbx conversion \n";
