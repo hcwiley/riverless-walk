@@ -27,34 +27,36 @@ void loop()
 {
   if(Serial.available() > 0){
       byte data = Serial.read();
-      if (data > 0){
+      if (data > 20){
         dir = 5;
+        data -= 20;
       }
-      else{
+      else if (data < 10 && data > 0){
         dir = 0;
       }
-      powIn = map(abs(data),0, 7, 0, 255);
-    }
-//    else{
-//      dir = 1;
-//      powIn = 0;
-//    }
-    if( dir == 5 ){
-      digitalWrite(dir_a, HIGH);  //Set motor direction, 1 low, 2 high
-      digitalWrite(dir_b, HIGH);  //Set motor direction, 3 high, 4 low
-      analogWrite(pwm_a, powIn);
-      analogWrite(pwm_b, powIn);
-    }
-    else if( dir == 0 ){
-      digitalWrite(dir_a, LOW);  //Set motor direction, 1 low, 2 high
-      digitalWrite(dir_b, LOW);  //Set motor direction, 3 high, 4 low
-      analogWrite(pwm_a, powIn);
-      analogWrite(pwm_b, powIn);
-    }
-    else{
-      analogWrite(pwm_a, 0);      
-      //set both motors to run at 0% duty cycle (off)
-      analogWrite(pwm_b, 0);
-    }
+      else{
+        dir = 1;
+        powIn = 0;
+        data = 0;
+      }
+      powIn = map(abs(data),2, 7, 30, 140);
+  }
+  if( dir == 5 ){
+    digitalWrite(dir_a, HIGH);  //Set motor direction, 1 low, 2 high
+    digitalWrite(dir_b, HIGH);  //Set motor direction, 3 high, 4 low
+    analogWrite(pwm_a, powIn);
+    analogWrite(pwm_b, powIn);
+  }
+  else if( dir == 0 ){
+    digitalWrite(dir_a, LOW);  //Set motor direction, 1 low, 2 high
+    digitalWrite(dir_b, LOW);  //Set motor direction, 3 high, 4 low
+    analogWrite(pwm_a, powIn);
+    analogWrite(pwm_b, powIn);
+  }
+  else{
+    analogWrite(pwm_a, 0);      
+    //set both motors to run at 0% duty cycle (off)
+    analogWrite(pwm_b, 0);
+  }
 //  }
 }

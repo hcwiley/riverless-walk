@@ -56,15 +56,25 @@ void draw()
     model.draw();
 
     popMatrix();
-    image(user.drawUser(),0,0);
+    image(user.drawUser(),600, 600);
     // draw the skeleton if it's available
     if(user.context.isTrackingSkeleton(user.curUser)){
       user.drawSkeleton(user.curUser);
       PVector dir = user.trackUser();
       print(dir.x / 100+", ");
       byte out = byte(dir.x / 100);
-      serial.write(out);
-      println(out);
+      if(abs(out) > 2){
+        if(out < 0){
+          out = byte(abs(out));
+          out += 20;
+        }
+        serial.write(out);
+        println(out);
+      }
+      else{
+        serial.write(byte(0));
+        println("in the middle");
+      }
       /*
       if(dir.x > 0){
         while(serial.available() < 1){
