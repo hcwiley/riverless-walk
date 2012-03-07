@@ -36,7 +36,7 @@ void setup()
     kinect = new SimpleOpenNI(this);
     user = new UserTracker(kinect);
     println(Serial.list());
-    serial = new Serial(this, Serial.list()[0], 19200);
+    serial = new Serial(this, Serial.list()[0], 9600);
     while(serial.available() < 1){
     }
     println(serial.readString());
@@ -61,8 +61,10 @@ void draw()
     if(user.context.isTrackingSkeleton(user.curUser)){
       user.drawSkeleton(user.curUser);
       PVector dir = user.trackUser();
-      serial.write(int(dir.x));
-      println(dir.x);
+      print(dir.x / 100+", ");
+      byte out = byte(dir.x / 100);
+      serial.write(out);
+      println(out);
       /*
       if(dir.x > 0){
         while(serial.available() < 1){
