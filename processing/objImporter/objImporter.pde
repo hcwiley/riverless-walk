@@ -1,13 +1,17 @@
-import SimpleOpenNI.*;
+import processing.serial.*;
 import processing.opengl.*;
 import javax.media.opengl.*;
 import saito.objloader.*;
+import SimpleOpenNI.*;
 
 OBJModel model ;
 
 PVector rot, tran, modelTran;
 GL gl;
-
+//Kinect Tracker
+UserTracker user;
+SimpleOpenNI kinect;
+Serial serial;
 void setup()
 {
     size(1280, 1080, OPENGL);
@@ -28,9 +32,15 @@ void setup()
     addMouseWheelListener(new java.awt.event.MouseWheelListener() { 
     public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) { 
       mouseWheel(evt.getWheelRotation());
-  }});
+    }});
+    kinect = new SimpleOpenNI(this);
+    user = new UserTracker(kinect);
+    println(Serial.list());
+    serial = new Serial(this, Serial.list()[0], 19200);
+    while(serial.available() < 1){
+    }
+    println(serial.readString());
 }
-
 
 
 void draw()
@@ -46,6 +56,18 @@ void draw()
     model.draw();
 
     popMatrix();
+    image(user.drawUser(),0,0);
+    // draw the skeleton if it's available
+    if(user.context.isTrackingSkeleton(user.curUser)){
+      user.drawSkeleton(user.curUser);
+      PVector dir = user.trackUser();
+      if(dir.x > 0){
+        serial.write(0x05);
+      }
+      else if(dir.x < 0){
+        serial.write(0x00);
+      }
+    }
 }
 
 boolean bTexture = true;
@@ -102,3 +124,33 @@ void mouseDragged()
 void mouseWheel(int delta){
  tran.z -= delta * 10;
 }
+
+void onNewUser(int userId){
+ user.onNewUser(userId); 
+}
+
+void onLostUser(int userId)
+{
+  user.onLostUser(userId);
+}
+
+void onStartCalibration(int userId)
+{
+  user.onStartCalibration(userId);
+}
+
+void onEndCalibration(int userId, boolean successfull)
+{
+  user.onEndCalibration(userId, successfull);
+}
+
+void onStartPose(String pose,int userId)
+{
+  user.onStartPose(pose, userId);
+}
+
+void onEndPose(String pose,int userId)
+{
+  user.onEndPose(pose, userId);
+}
+
