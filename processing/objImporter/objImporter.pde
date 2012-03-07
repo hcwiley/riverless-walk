@@ -61,12 +61,27 @@ void draw()
     if(user.context.isTrackingSkeleton(user.curUser)){
       user.drawSkeleton(user.curUser);
       PVector dir = user.trackUser();
+      serial.write(int(dir.x));
+      println(dir.x);
+      /*
       if(dir.x > 0){
-        serial.write(0x05);
+        while(serial.available() < 1){
+        }
+        println(serial.readString());
+        byte power = byte((abs(dir.x/7000) * 255));
+        println(power);
+        serial.write(power);
       }
       else if(dir.x < 0){
-        serial.write(0x00);
+        serial.write(di);
+        while(serial.available() < 1){
+        }
+        println(serial.readString());
+        byte power = byte((abs(dir.x/7000) * 255));
+        println(power);
+        serial.write(power);
       }
+      */
     }
 }
 
