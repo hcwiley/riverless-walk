@@ -31,7 +31,7 @@ void loop()
         dir = 5;
         data -= 20;
       }
-      else if (data < 10 && data > 0){
+      else if (data < 20 && data > 0){
         dir = 0;
       }
       else{

@@ -36,10 +36,10 @@ void setup()
     kinect = new SimpleOpenNI(this);
     user = new UserTracker(kinect);
     println(Serial.list());
-    serial = new Serial(this, Serial.list()[0], 9600);
-    while(serial.available() < 1){
-    }
-    println(serial.readString());
+//    serial = new Serial(this, Serial.list()[0], 9600);
+//    while(serial.available() < 1){
+//    }
+//    println(serial.readString());
 }
 
 
@@ -61,39 +61,27 @@ void draw()
     if(user.context.isTrackingSkeleton(user.curUser)){
       user.drawSkeleton(user.curUser);
       PVector dir = user.trackUser();
-      print(dir.x / 100+", ");
+//      print(dir.x / 100+", ");
       byte out = byte(dir.x / 100);
       if(abs(out) > 2){
         if(out < 0){
           out = byte(abs(out));
           out += 20;
         }
-        serial.write(out);
-        println(out);
+//        serial.write(out);
+        rot.x += dir.x / 10000;
+//        println(out);
       }
       else{
-        serial.write(byte(0));
+//        serial.write(byte(0));
         println("in the middle");
       }
-      /*
-      if(dir.x > 0){
-        while(serial.available() < 1){
-        }
-        println(serial.readString());
-        byte power = byte((abs(dir.x/7000) * 255));
-        println(power);
-        serial.write(power);
+      float deltaZ = dir.z - 2100;
+      deltaZ /= -10;
+      if(abs(deltaZ) > 20){
+        tran.z += deltaZ;
+        println(deltaZ);
       }
-      else if(dir.x < 0){
-        serial.write(di);
-        while(serial.available() < 1){
-        }
-        println(serial.readString());
-        byte power = byte((abs(dir.x/7000) * 255));
-        println(power);
-        serial.write(power);
-      }
-      */
     }
 }
 
