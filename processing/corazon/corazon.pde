@@ -15,7 +15,7 @@ Serial serial;
 color INDICATOR;
 void setup()
 {
-  size(1920, 1080, OPENGL);
+  size(1024, 768, OPENGL);
   frameRate(26);
   model = new OBJModel(this, "walking-out-01.obj", "absolute", QUADS);
   model.enableDebug();
@@ -53,7 +53,7 @@ void setup()
 void draw()
 {
   kinect.update();
-  PImage curImage = kinect.depthImage();
+//  PImage curImage = kinect.depthImage();
   background(129);
   lights();
   pushMatrix();
@@ -91,7 +91,7 @@ void draw()
         out += 20;
       }
       serial.write(out);
-      rot.x -= dir.x / 10000;
+      rot.x -= dir.x / 20000;
 //      println(out);
     }
     else {
@@ -108,7 +108,7 @@ void draw()
   else{
     serial.write(byte(0));
   }
-  image(curImage, 0, 0);
+//  image(kinect.depthImage, 0, 0);
 }
 
 boolean bTexture = true;
