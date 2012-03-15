@@ -488,9 +488,9 @@
 					"/usr/include/nite/**",
 					"/usr/include/ni/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.7;
+				SDKROOT = "";
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
 				VALID_ARCHS = x86_64;
 			};
@@ -516,9 +516,9 @@
 					"/usr/include/nite/**",
 					"/usr/include/ni/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.7;
+				SDKROOT = "";
 				USER_HEADER_SEARCH_PATHS = "/usr/include/nite/** /usr/include/ni/**";
 				VALID_ARCHS = x86_64;
 			};
