@@ -1,0 +1,8 @@
+*.DS_STORE
+*.javac
+*/applet*
+*.pyc
+Aptana/*
+*.conflict
+*.project
+.settings*
