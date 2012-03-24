@@ -28,18 +28,18 @@ void loop()
   if(Serial.available() > 0){
       byte data = Serial.read();
       if (data > 20){
-        dir = 5;
+        dir = 0;
         data -= 20;
       }
       else if (data < 20 && data > 0){
-        dir = 0;
+        dir = 5;
       }
       else{
         dir = 1;
         powIn = 0;
         data = 0;
       }
-      powIn = map(abs(data),2, 7, 30, 140);
+      powIn = map(abs(data),0, 15, 110, 190);
   }
   if( dir == 5 ){
     digitalWrite(dir_a, HIGH);  //Set motor direction, 1 low, 2 high
