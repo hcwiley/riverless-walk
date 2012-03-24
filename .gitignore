@@ -6,3 +6,9 @@ Aptana/*
 *.conflict
 *.project
 .settings*
+videos/*
+*.3gp
+*.mov
+*.mp4
+*.ogg
+*.mpg
