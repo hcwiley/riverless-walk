@@ -11,7 +11,7 @@ class Particle {
     Fiddling parent;
 
     public int random(float radius) {
-        return generator.nextInt(Math.abs((int)radius)+1);
+        return generator.nextInt(Math.abs((int) radius));
     }
 
     Particle(Fiddling par) {
@@ -32,22 +32,14 @@ class Particle {
             position.addSelf(parent.randomParticle().position);
     }
 
-    void resetPosition(float rebirthRadius) {
-        position = Vec3D.randomVector();
-        position.scaleSelf(random(parent.rebirthRadius));
-        if (parent.particles.size() == 0)
-            position.addSelf(parent.avg);
-        else
-            position.addSelf(parent.randomParticle().position);
-    }
-
     void draw() {
         float distanceToFocalPlane = parent.focalPlane
                 .getDistanceToPoint(position);
         distanceToFocalPlane *= 1 / parent.dofRatio;
         distanceToFocalPlane = parent.constrain(distanceToFocalPlane, 1, 15);
         parent.strokeWeight(distanceToFocalPlane);
-        parent.stroke(255, parent.constrain(255 / (distanceToFocalPlane * distanceToFocalPlane), 1, 255));
+        parent.stroke(255, parent.constrain(
+                255 / (distanceToFocalPlane * distanceToFocalPlane), 1, 255));
         parent.point(position.x, position.y, position.z);
     }
 

@@ -55,6 +55,10 @@ public class Fiddling extends PApplet {
     Plane focalPlane;
     PeasyCam cam;
     Controls controls;
+    float thetaDelta;
+    float theta;
+    int blocksize = 5;
+    int buildingRadius = 1500;
 
     PVector rot, tran, modelTran;
 //    GL gl;
@@ -88,7 +92,7 @@ public class Fiddling extends PApplet {
         // println(gl);
         // mm.setQueueSize(50, 100);
         cam = new PeasyCam(this, 2000);
-        cam.setMinimumDistance(0);
+        cam.setMinimumDistance(50);
         cam.setMaximumDistance(5000);
         cam.beginHUD();
 
@@ -99,8 +103,6 @@ public class Fiddling extends PApplet {
         cameraCenter = new Vec3D();
         avg = new Vec3D();
         globalOffset = new Vec3D(0, 1.f / 3, 2.f / 3);
-        
-        rebirthRadius = 500;
 
         particles = new Vector();
         for (int i = 0; i < n; i++)
@@ -211,7 +213,7 @@ public class Fiddling extends PApplet {
         }
 
         for (int i = 0; i < rebirth; i++)
-            randomParticle().resetPosition(rebirthRadius);
+            randomParticle().resetPosition();
 
         if (particles.size() > n)
             particles.setSize(n);
