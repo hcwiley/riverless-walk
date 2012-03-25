@@ -10,8 +10,8 @@ import processing.core.*;
 import codeanticode.gsvideo.*;
 //import processing.video.*;
 import processing.serial.*;
-import processing.opengl.PGraphicsOpenGL;
-import javax.media.opengl.*;
+import processing.opengl.*;
+//import javax.media.opengl.*;
 //import saito.objloader.*;
 import SimpleOpenNI.*;
 import java.awt.*;
@@ -39,9 +39,9 @@ public class Fiddling extends PApplet {
         System.out.println(theApplet.getSize());
         window.setVisible(true); // Make the window visible
     }
-    
-    public Fiddling(){
-        
+
+    public Fiddling() {
+
     }
 
     // Particle Cloud stuff
@@ -57,7 +57,7 @@ public class Fiddling extends PApplet {
     Controls controls;
 
     PVector rot, tran, modelTran;
-    GL gl;
+//    GL gl;
     // Kinect
     SimpleOpenNI kinect;
 
@@ -78,30 +78,33 @@ public class Fiddling extends PApplet {
     public void setup() {
         // mm = new MovieMaker(this, width, height, "riverless-walk.mov",
         // MovieMaker.MEDIUM);
-        this.size(1600, 1200, P3D);
+        this.size(1600, 1200, OPENGL);
         frameRate(26);
         // mm = new GSMovieMaker(this, width, height, "drawing.ogg");//,
         // GSMovieMaker.X264, GSMovieMaker.LOW, int(frameRate));
         // mm.setQueueSize(0, 100);
         // mm.start();
-//        gl = ((PGraphicsOpenGL) g).gl;
-//        println(gl);
+        // gl = ((PGraphicsOpenGL) g).gl;
+        // println(gl);
         // mm.setQueueSize(50, 100);
         cam = new PeasyCam(this, 2000);
-        cam.setMinimumDistance(50);
-        cam.setMaximumDistance(1800);
+        cam.setMinimumDistance(0);
+        cam.setMaximumDistance(5000);
+        cam.beginHUD();
 
-        controls = new Controls();
+        controls = new Controls(this);
         controls.setParameters();
-        controls.makeControls(this);
+        controls.makeControls();
 
         cameraCenter = new Vec3D();
         avg = new Vec3D();
         globalOffset = new Vec3D(0, 1.f / 3, 2.f / 3);
+        
+        rebirthRadius = 500;
 
         particles = new Vector();
         for (int i = 0; i < n; i++)
-            particles.add(new Particle());
+            particles.add(new Particle(this));
 
         noStroke();
         rot = new PVector((float) 2.4699998, (float) 6.4400015, (float) 0.0);
@@ -213,7 +216,7 @@ public class Fiddling extends PApplet {
         if (particles.size() > n)
             particles.setSize(n);
         while (particles.size() < n)
-            particles.add(new Particle());
+            particles.add(new Particle(this));
         // original
         globalOffset.addSelf(turbulence / neighborhood, turbulence
                 / neighborhood, turbulence / neighborhood);

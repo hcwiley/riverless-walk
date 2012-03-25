@@ -31,7 +31,7 @@ class EImage {
           scene.stroke(inverted);
 //          noStroke();
 //          fill(inverted);
-          r += values[x][y];
+          r += values[x][y]*2;
           float px = r*scene.cos(theta);
           float pz = r*scene.sin(theta);
           scene.beginShape(scene.QUAD_STRIP);
@@ -39,11 +39,11 @@ class EImage {
           scene.vertex(px, y*4-r0-blocksize, pz);
           scene.vertex(px-blocksize, y*4-r0, pz-blocksize);
           scene.vertex(px-blocksize, y*4-r0-blocksize, pz-blocksize);
+//          scene.vertex(px, y*4-r0, pz);
+//          scene.vertex(px, y*4-r0+blocksize, pz);
+//          scene.vertex(px+blocksize, y*4-r0, pz+blocksize);
+//          scene.vertex(px+blocksize, y*4-r0+blocksize, pz+blocksize);
           scene.endShape();
-//          vertex(px, y*4-r0, pz);
-//          vertex(px, y*4-r0+blocksize, pz);
-//          vertex(px+blocksize, y*4-r0, pz+blocksize);
-//          vertex(px+blocksize, y*4-r0+blocksize, pz+blocksize);
         }
         /*
         else{
