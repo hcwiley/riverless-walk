@@ -15,7 +15,7 @@ Serial serial;
 color INDICATOR;
 void setup()
 {
-  size(1024, 768, OPENGL);
+  size(1440, 900, OPENGL);
   frameRate(26);
   model = new OBJModel(this, "walking-out-01.obj", "absolute", QUADS);
   model.enableDebug();
@@ -32,6 +32,9 @@ void setup()
   rot = new PVector(4, 6.22, 0);
   tran = new PVector();
   model.translate(modelTran);
+  model.enableMaterial();
+  model.enableTexture();
+  model.originalTexture();
   addMouseWheelListener(new java.awt.event.MouseWheelListener() { 
     public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) { 
       mouseWheel(evt.getWheelRotation());
@@ -44,9 +47,9 @@ void setup()
   kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
   println(Serial.list());
   serial = new Serial(this, Serial.list()[0], 9600);
-  while (serial.available () < 1) {
-  }
-  println(serial.readString());
+//  while (serial.available () < 1) {
+//  }
+//  println(serial.readString());
 }
 
 
@@ -54,7 +57,7 @@ void draw()
 {
   kinect.update();
 //  PImage curImage = kinect.depthImage();
-  background(129);
+//  background(129);
   lights();
   pushMatrix();
   translate(tran.x, tran.y, tran.z);
@@ -91,7 +94,7 @@ void draw()
         out += 20;
       }
       serial.write(out);
-      rot.x -= dir.x / 20000;
+      rot.x -= dir.x / 10000;
 //      println(out);
     }
     else {
