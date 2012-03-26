@@ -1,4 +1,3 @@
-import processing.core.PApplet;
 import controlP5.*;
 
 public class Controls {

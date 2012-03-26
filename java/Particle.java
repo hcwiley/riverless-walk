@@ -1,8 +1,6 @@
 import toxi.geom.*;
 import java.util.Random;
 
-import processing.core.PApplet;
-
 class Particle {
     Vec3D centeringForce;
     Vec3D position, velocity, force;
@@ -38,7 +36,7 @@ class Particle {
         distanceToFocalPlane *= 1 / parent.dofRatio;
         distanceToFocalPlane = parent.constrain(distanceToFocalPlane, 1, 15);
         parent.strokeWeight(distanceToFocalPlane);
-        parent.stroke(255, parent.constrain(
+        parent.stroke(0, parent.constrain(
                 255 / (distanceToFocalPlane * distanceToFocalPlane), 1, 255));
         parent.point(position.x, position.y, position.z);
     }

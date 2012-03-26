@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding=".classpath|.project|bin.stable/|data/" kind="src" path="">
+	<classpathentry excluding=".DS_Store|.classpath|.project|bin.stable/|data/" kind="src" path="">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="riverless_java/bin"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="riverless_walk_java/bin"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/SimpleOpenNI/library/SimpleOpenNI.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/opengl/library/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/opengl/library/jogl.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/opengl/library/opengl.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/toxiclibs_p5/library/toxiclibs_p5.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/verletphysics/library/verletphysics.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/toxiclibscore/library/toxiclibscore.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/controlP5/library/controlP5.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/colorutils/library/colorutils.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/datautils/library/datautils.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/volumeutils/library/volumeutils.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/peasycam/library/peasycam.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/pogg/library/pogg.jar"/>
-	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/simutils/library/simutils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/audioutils/library/audioutils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/audioutils/library/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/audioutils/library/joal.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/colorutils/library/colorutils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/controlP5/library/controlP5.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/datautils/library/datautils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/opengl/library/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/opengl/library/jogl.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/opengl/library/opengl.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/peasycam/library/peasycam.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/pogg/library/pogg.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/SimpleOpenNI/library/SimpleOpenNI.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/simutils/library/simutils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/toxiclibs_p5/library/toxiclibs_p5.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/toxiclibscore/library/toxiclibscore.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/verletphysics/library/verletphysics.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/volumeutils/library/volumeutils.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/GSVideo/library/gstreamer-java.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/GSVideo/library/GSVideo.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/GSVideo/library/jna.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/serial/library/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/serial/library/serial.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

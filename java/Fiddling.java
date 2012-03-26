@@ -7,298 +7,315 @@ H. Cole Wiley cole@decode72.com
  ill get the rest later
  */
 import processing.core.*;
-import codeanticode.gsvideo.*;
-//import processing.video.*;
 import processing.serial.*;
-import processing.opengl.*;
-//import javax.media.opengl.*;
-//import saito.objloader.*;
+//import processing.opengl.*;
 import SimpleOpenNI.*;
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.*;
 
 import peasy.*;
 import toxi.geom.*;
-import controlP5.*;
 
 public class Fiddling extends PApplet {
 
-    public static void main(String args[]) {
-        Fiddling theApplet = new Fiddling();
-        theApplet.init(); // Needed if overridden in applet
-        theApplet.start(); // Needed if overridden in applet
+	public static void main(String args[]) {
+		Fiddling theApplet = new Fiddling();
+		theApplet.init(); // Needed if overridden in applet
+		theApplet.start(); // Needed if overridden in applet
 
-        // ... Create a window (JFrame) and make applet the content pane.
-        JFrame window = new JFrame("SkeletonServer");
-        window.setContentPane(theApplet);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.pack(); // Arrange the components.
-        System.out.println(theApplet.getSize());
-        window.setVisible(true); // Make the window visible
-    }
+		// ... Create a window (JFrame) and make applet the content pane.
+		JFrame window = new JFrame("riverless walk");
+		window.setContentPane(theApplet);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.pack(); // Arrange the components.
+		System.out.println(theApplet.getSize());
+		window.setVisible(true); // Make the window visible
+	}
 
-    public Fiddling() {
+	public Fiddling() {
 
-    }
+	}
 
-    // Particle Cloud stuff
+	// Particle Cloud stuff
 
-    Vec3D globalOffset, avg, cameraCenter;
-    public float neighborhood, viscosity, speed, turbulence, cameraRate,
-            rebirthRadius, spread, independence, dofRatio;
-    public int n, rebirth;
-    public boolean averageRebirth, paused;
-    Vector particles;
-    Plane focalPlane;
-    PeasyCam cam;
-    Controls controls;
-    float thetaDelta;
-    float theta;
-    int blocksize = 5;
-    int buildingRadius = 1500;
+	Vec3D globalOffset, avg, cameraCenter;
+	public float neighborhood, viscosity, speed, turbulence, cameraRate,
+			rebirthRadius, spread, independence, dofRatio;
+	public int n, rebirth;
+	public boolean averageRebirth, paused;
+	Vector particles;
+	Plane focalPlane;
+	PeasyCam cam;
+	Controls controls;
+	float thetaDelta = (float) 1.64;
+	float theta = (float) 1.64;
+	int blocksize = 5;
+	int buildingRadius = 1500;
 
-    PVector rot, tran, modelTran;
-//    GL gl;
-    // Kinect
-    SimpleOpenNI kinect;
+	PVector rot, tran, modelTran;
+	int y0;
+	// GL gl;
+	// Kinect
+	SimpleOpenNI kinect;
 
-    Serial serial;
-    Viewers viewers;
-    IntVector userList;
-    PFont font;
-    EImages eimages;
-    int threshHold = 100;
-    float scale = 1;
-    int NUM_EIMAGES = 6;
+	Serial serial;
+	// Viewers viewers;
+	IntVector userList;
+	PFont font;
+	EImages eimages;
+	int threshHold = 120;
+	float scale = 1;
+	int NUM_EIMAGES = 4;
+	PVector center;
 
-    // MovieMaker
-    GSMovieMaker mm;
-    boolean recording = false;
-    boolean noLines = false;
+	boolean noLines = true;
 
-    public void setup() {
-        // mm = new MovieMaker(this, width, height, "riverless-walk.mov",
-        // MovieMaker.MEDIUM);
-        this.size(1600, 1200, OPENGL);
-        frameRate(26);
-        // mm = new GSMovieMaker(this, width, height, "drawing.ogg");//,
-        // GSMovieMaker.X264, GSMovieMaker.LOW, int(frameRate));
-        // mm.setQueueSize(0, 100);
-        // mm.start();
-        // gl = ((PGraphicsOpenGL) g).gl;
-        // println(gl);
-        // mm.setQueueSize(50, 100);
-        cam = new PeasyCam(this, 2000);
-        cam.setMinimumDistance(50);
-        cam.setMaximumDistance(5000);
-        cam.beginHUD();
+	public void setup() {
+		this.size(1024, 768, P3D);
+		frameRate(26);
+		// gl = ((PGraphicsOpenGL) g).gl;
+		// println(gl);
+		// mm.setQueueSize(50, 100);
+		cam = new PeasyCam(this, 200);
+		cam.setMinimumDistance(50);
+		cam.setMaximumDistance(4000);
 
-        controls = new Controls(this);
-        controls.setParameters();
-        controls.makeControls();
+		controls = new Controls(this);
+		controls.setParameters();
+		controls.makeControls();
 
-        cameraCenter = new Vec3D();
-        avg = new Vec3D();
-        globalOffset = new Vec3D(0, 1.f / 3, 2.f / 3);
+		cameraCenter = new Vec3D();
+		avg = new Vec3D();
+		globalOffset = new Vec3D(0, 1.f / 3, 2.f / 3);
 
-        particles = new Vector();
-        for (int i = 0; i < n; i++)
-            particles.add(new Particle(this));
+		particles = new Vector();
+		n = 300;
+		for (int i = 0; i < n; i++)
+			particles.add(new Particle(this));
 
-        noStroke();
-        rot = new PVector((float) 2.4699998, (float) 6.4400015, (float) 0.0);
-        tran = new PVector(0, 300, 0);// width/4, height/4, 0);
-        // addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-        // public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-        // mouseWheel(evt.getWheelRotation());
-        // }
-        // }
-        // );
-        // kinect and viewer stuff, as they are related
-        // kinect = new SimpleOpenNI(this);
-        // kinect.enableDepth();
-        // kinect.setMirror(true);
-        // kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
-        viewers = new Viewers();
-        // userList = new IntVector();
-        // Getting my font ready
-        font = createFont("Helvetica", 44);
-        textFont(font);
-        // getting all my extrudeimages setup
-        eimages = new EImages();
-        for (int i = 0; i < NUM_EIMAGES; i++) {
-            eimages.add(new EImage(this, "img" + i + ".jpg"));
-        }
-    }
+		noStroke();
+		rot = new PVector((float) 2.4699998, (float) 6.4400015, (float) 0.0);
+		y0 = -250;
+		tran = new PVector(0, y0, 0);
+		
+		
+		// kinect and viewer stuff, as they are related
+		kinect = new SimpleOpenNI(this);
+		kinect.enableDepth();
+		kinect.setMirror(true);
+		kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
+		// viewers = new Viewers();
+		userList = new IntVector();
+		// Getting my font ready
+		// font = createFont("Helvetica", 44);
+		// textFont(font);
+		// getting all my extrudeimages setup
+		eimages = new EImages();
+		for (int i = 0; i < NUM_EIMAGES; i++) {
+			eimages.add(new EImage(this, "img" + i + ".jpg"));
+		}
 
-    int cloudTimer = millis();
+		serial = new Serial(this, Serial.list()[0], 9600);
+		while (serial.available() < 1) {
+		}
+		println(serial.readString());
+	}
 
-    public void draw() {
-        // kinect.update();
-        // PImage curImage = kinect.depthImage();
-        background(29);
-        lights();
-        fill(113);
-        noStroke();
-        translate(tran.x, tran.y, tran.z);
-        if (!recording && !noLines) {
-            stroke(255, 0, 0);
-            line(-5000, 0, 0, 5000, 0, 0);
-            stroke(0, 255, 0);
-            line(0, -5000, 0, 0, 5000, 0);
-            stroke(0, 0, 255);
-            line(0, 0, -5000, 0, 0, 5000);
-        }
-        // sphere(1200);
-        rotateX(rot.y);
-        rotateY(rot.x);
-        rotateZ(rot.z);
-        /*
-         * image(kinect.depthImage(), 0, 0); userList.clear();
-         * kinect.getUsers(userList); if (userList.size() > 0) {
-         * text("viewers: "+userList.size(), 600, 210, 600, 200); for (int i=0;
-         * i<userList.size(); i++) { int userId = userList.get(i); PVector
-         * position = new PVector(); kinect.getCoM(userId, position); if
-         * (viewers.viewer(userId) != null) {
-         * viewers.viewer(userId).updatePosition(position);
-         * text("speed: "+viewers.viewer(userId).speed, 700, 10, 600, 200); }
-         * else { println("adding new viewer"); viewers.add(new Viewer(position,
-         * userId)); } } } else { // viewers = new Viewers(); viewers.clear(); }
-         */
-        eimages.render(threshHold);
-        // if(millis() - cloudTimer > 4) {
-        // cloudTimer = millis();
-        cloudDraw();
-        // }
-        if (recording) {
-            loadPixels();
-            // Add window's pixels to movie
-            mm.addFrame(pixels);
-            // mm.addFrame();
-        }
-    }
+	int cloudTimer = millis();
 
-    public Particle randomParticle() {
-        return ((Particle) particles.get((int) random(particles.size())));
-    }
+	public void draw() {
+		kinect.update();
+		// PImage curImage = kinect.depthImage();
+		background(29);
+		lights();
+		fill(66);
+		noStroke();
+		translate(tran.x, tran.y, tran.z);
+		sphere(2 * buildingRadius);
+		fill(113);
+		beginShape(QUADS);
+		vertex(-2 * buildingRadius, 1000, -2 * buildingRadius);
+		vertex(-2 * buildingRadius, 1000, 2 * buildingRadius);
+		vertex(2 * buildingRadius, 1000, 2 * buildingRadius);
+		vertex(2 * buildingRadius, 1000, -2 * buildingRadius);
+		endShape();
+		if (!noLines) {
+			stroke(255, 0, 0);
+			line(-5000, 0, 0, 5000, 0, 0);
+			stroke(0, 255, 0);
+			line(0, -5000, 0, 0, 5000, 0);
+			stroke(0, 0, 255);
+			line(0, 0, -5000, 0, 0, 5000);
+		}
+		// sphere(1200);
+		rotateX(rot.y);
+		rotateY(rot.x);
+		rotateZ(rot.z);
+		// image(kinect.depthImage(), 0, 0);
+		userList.clear();
+		kinect.getUsers(userList);
+		if (userList.size() > 0) {
+			center = new PVector();
+			for (int i = 0; i < userList.size(); i++) {
+				int userId = userList.get(i);
+				PVector position = new PVector();
+				kinect.getCoM(userId, position);
+				center.x += position.x;
+				center.y += position.y;
+				center.z += position.z;
+				// if (viewers.viewer(userId) != null) {
+				// viewers.viewer(userId).updatePosition(position);
+				// } else {
+				// System.out.println("adding new viewer");
+				// viewers.add(new Viewer(position, userId, this));
+				// }
+			}
+			center.x /= userList.size();
+			center.y /= userList.size();
+			center.z /= userList.size();
+			byte iout = (byte) map(center.x, -700, 700, -15, 15);
+			track(iout);
+			if (serial != null) {
+				sendSerial(iout);
+			}
+			// text("z: "+center.z, 700, 10,
+			// 600, 200);
+			blocksize = (int) map(center.z, 800, 1900, 1, 100);
+			buildingRadius = (int) map(userList.size(), 1, 5, 900, 3000);
+			tran.y = (int) map(center.y, 0, -180, y0-200, y0+500);
+		} else {
+			// viewers = new Viewers();
+			// viewers.clear();
+			serial.write((byte) 0);
+			// println("cleared viewers");
+		}
+		eimages.render(threshHold);
+		if (millis() - cloudTimer > 10) {
+			cloudTimer = millis();
+			cloudDraw();
+		}
+	}
 
-    public void cloudDraw() {
-        avg = new Vec3D();
-        for (int i = 0; i < particles.size(); i++) {
-            Particle cur = ((Particle) particles.get(i));
-            avg.addSelf(cur.position);
-        }
-        avg.scaleSelf(1.f / particles.size());
+	public void track(byte iout) {
+		if (abs(iout) > 2) {
+			rot.x -= iout * .03;
+		}
+	}
 
-        cameraCenter.scaleSelf(1 - cameraRate);
-        cameraCenter.addSelf(avg.scale(cameraRate));
+	public void sendSerial(byte out) {
+		if (abs(out) > 2) {
+			if (out < 0) {
+				out = (byte) abs(out);
+				out += 20;
+			}
+			serial.write(out);
+			// println(out);
+		} else {
+			serial.write((byte) 0);
+			// println("in the middle");
+		}
+	}
 
-        // translate(-cameraCenter.x, -cameraCenter.y, -cameraCenter.z);
+	public Particle randomParticle() {
+		return ((Particle) particles.get((int) random(particles.size())));
+	}
 
-        float[] camPosition = cam.getPosition();
-        focalPlane = new Plane(avg, new Vec3D(camPosition[0], camPosition[1],
-                camPosition[2]));
+	public void cloudDraw() {
+		avg = new Vec3D();
+		for (int i = 0; i < particles.size(); i++) {
+			Particle cur = ((Particle) particles.get(i));
+			avg.addSelf(cur.position);
+		}
+		avg.scaleSelf(1.f / particles.size());
 
-        // background(0);
-        noFill();
-        hint(DISABLE_DEPTH_TEST);
-        for (int i = 0; i < particles.size(); i++) {
-            Particle cur = ((Particle) particles.get(i));
-            if (!paused)
-                cur.update();
-            cur.draw();
-        }
+		cameraCenter.scaleSelf(1 - cameraRate);
+		cameraCenter.addSelf(avg.scale(cameraRate));
 
-        for (int i = 0; i < rebirth; i++)
-            randomParticle().resetPosition();
+		// translate(-cameraCenter.x, -cameraCenter.y, -cameraCenter.z);
 
-        if (particles.size() > n)
-            particles.setSize(n);
-        while (particles.size() < n)
-            particles.add(new Particle(this));
-        // original
-        globalOffset.addSelf(turbulence / neighborhood, turbulence
-                / neighborhood, turbulence / neighborhood);
-        // int r = 1800;
-        // for(int theta=0; theta < 360; theta+=10) {
-        // globalOffset.addSelf(r*cos(theta), 400,r*sin(theta));
-        // }
-        // globalOffset.addSelf(1500,600, 1500);
-    }
+		float[] camPosition = cam.getPosition();
+		focalPlane = new Plane(avg, new Vec3D(camPosition[0], camPosition[1],
+				camPosition[2]));
 
-    //
-    // boolean bTexture = true;
-    // boolean bStroke = true;
+		// background(0);
+		noFill();
+		hint(DISABLE_DEPTH_TEST);
+		for (int i = 0; i < particles.size(); i++) {
+			Particle cur = ((Particle) particles.get(i));
+			if (!paused)
+				cur.update();
+			cur.draw();
+		}
 
-    public void keyPressed() {
-        if (key == 'p') {
-            println("rot: " + rot.x + ", " + rot.y + ", " + rot.z);
-            println("tran: " + tran.x + ", " + tran.y + ", " + tran.z);
-        } else if (key == 'r')
-            tran.x += 15;
-        else if (key == 'f')
-            tran.x -= 15;
-        else if (key == 'e')
-            tran.z += 15;
-        else if (key == 't')
-            tran.z -= 15;
-        else if (key == 'y')
-            tran.y += 15;
-        else if (key == 'h')
-            tran.y -= 15;
-        else if (key == '+')
-            threshHold += 10;
-        else if (key == '=')
-            threshHold += 1;
-        else if (key == '_')
-            threshHold -= 10;
-        else if (key == '-')
-            threshHold -= 1;
-        else if (key == 'l')
-            this.scale((float) (scale * .75));
-        else if (key == 'b')
-            this.scale((float) (scale * 1.25));
-        else if (keyCode == LEFT)
-            rot.x += .1;
-        else if (keyCode == RIGHT)
-            rot.x -= .1;
-        else if (keyCode == UP)
-            tran.z += 10;
-        else if (keyCode == DOWN)
-            tran.z -= 10;
-        else if (key == 'n')
-            noLines = !noLines;
-        else if (key == 'R') {
-            recording = !recording;
-            if (recording) {
-                mm.start();
-                println("now recording... better make it look pretty");
-            } else {
-                try {
-                    Thread.sleep(100);
-                } catch (Exception e) {
-                    println("whoops");
-                }
-                mm.finish();
-                println("done recording");
-            }
-        }
-    }
+		for (int i = 0; i < rebirth; i++)
+			randomParticle().resetPosition();
 
-    public void mouseDragged() {
-        if (keyPressed) {
-            if (keyCode == ALT) {
-                tran.x += (mouseX - pmouseX) * 2;
-                tran.y += (mouseY - pmouseY) * 2;
-                return;
-            }
-        }
-    }
+		if (particles.size() > n)
+			particles.setSize(n);
+		while (particles.size() < n)
+			particles.add(new Particle(this));
+		// original
+		globalOffset.addSelf(turbulence / neighborhood, turbulence
+				/ neighborhood, turbulence / neighborhood);
+		// int r = 1800;
+		// for(int theta=0; theta < 360; theta+=10) {
+		// globalOffset.addSelf(r*cos(theta), 400,r*sin(theta));
+		// }
+		// globalOffset.addSelf(1500,600, 1500);
+	}
 
-    public void mouseWheel(int delta) {
-        tran.z -= delta * 10;
-    }
+	public void keyPressed() {
+		if (key == 'p') {
+			println("rot: " + rot.x + ", " + rot.y + ", " + rot.z);
+			println("tran: " + tran.x + ", " + tran.y + ", " + tran.z);
+		} else if (key == 'r')
+			tran.x += 15;
+		else if (key == 'f')
+			tran.x -= 15;
+		else if (key == 'e')
+			tran.z += 15;
+		else if (key == 't')
+			tran.z -= 15;
+		else if (key == 'y')
+			tran.y += 15;
+		else if (key == 'h')
+			tran.y -= 15;
+		else if (key == '+')
+			threshHold += 10;
+		else if (key == '=')
+			threshHold += 1;
+		else if (key == '_')
+			threshHold -= 10;
+		else if (key == '-')
+			threshHold -= 1;
+		else if (key == 'l')
+			this.scale((float) (scale * .75));
+		else if (key == 'b')
+			this.scale((float) (scale * 1.25));
+		else if (keyCode == LEFT)
+			rot.x += .1;
+		else if (keyCode == RIGHT)
+			rot.x -= .1;
+		else if (keyCode == UP)
+			tran.z += 10;
+		else if (keyCode == DOWN)
+			tran.z -= 10;
+		else if (key == 'n')
+			noLines = !noLines;
+	}
+
+	public void mouseDragged() {
+		if (keyPressed) {
+			if (keyCode == ALT) {
+				tran.x += (mouseX - pmouseX) * 2;
+				tran.y += (mouseY - pmouseY) * 2;
+				return;
+			}
+		}
+	}
+
+	public void mouseWheel(int delta) {
+		tran.z -= delta * 10;
+	}
 }
