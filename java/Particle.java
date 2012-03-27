@@ -36,7 +36,7 @@ class Particle {
         distanceToFocalPlane *= 1 / parent.dofRatio;
         distanceToFocalPlane = parent.constrain(distanceToFocalPlane, 1, 15);
         parent.strokeWeight(distanceToFocalPlane);
-        parent.stroke(0, parent.constrain(
+        parent.stroke(170, parent.constrain(
                 255 / (distanceToFocalPlane * distanceToFocalPlane), 1, 255));
         parent.point(position.x, position.y, position.z);
     }

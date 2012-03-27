@@ -3,17 +3,17 @@ import processing.core.*;
 
 class EImage {
 	PImage extrude;
-	int[][] values;
+	byte[][] values;
 	Fiddling parent;
 
 	EImage(Fiddling sce, String file) {
 		parent = sce;
 		extrude = parent.loadImage(file);
 		extrude.loadPixels();
-		values = new int[extrude.width][extrude.height];
+		values = new byte[extrude.width][extrude.height];
 		for (int y = 0; y < extrude.height; y++) {
 			for (int x = 0; x < extrude.width; x++) {
-				values[x][y] = (int) (parent
+				values[x][y] = (byte) (parent
 						.brightness((int) extrude.get(x, y)));
 			}
 		}
@@ -25,8 +25,8 @@ class EImage {
 		// System.out.println(parent.thetaDelta);
 		double delta = (double) parent.theta * 0.01;// parent.map(1, 0, 360, 0,
 													// extrude.width);
-		for (int x = 0; x < extrude.width; x += 2) {
-			for (int y = 0; y < extrude.height; y += 2) {
+		for (int x = 0; x < extrude.width; x += 5) {
+			for (int y = 0; y < extrude.height; y += 5) {
 				int r = parent.buildingRadius;
 				if (values[x][y] < threshHold) {
 					int inverted = (int) (Fiddling.map((int) values[x][y], 0,

@@ -64,7 +64,7 @@ public class Fiddling extends PApplet {
 	IntVector userList;
 	PFont font;
 	EImages eimages;
-	int threshHold = 120;
+	int threshHold = 180;
 	float scale = 1;
 	int NUM_EIMAGES = 4;
 	PVector center;
@@ -72,14 +72,14 @@ public class Fiddling extends PApplet {
 	boolean noLines = true;
 
 	public void setup() {
-		this.size(1024, 768, P3D);
-		frameRate(26);
+		this.size(1024, 768, OPENGL);
+		frameRate(15);
 		// gl = ((PGraphicsOpenGL) g).gl;
 		// println(gl);
 		// mm.setQueueSize(50, 100);
 		cam = new PeasyCam(this, 200);
-		cam.setMinimumDistance(50);
-		cam.setMaximumDistance(4000);
+		cam.setMinimumDistance(300);
+		cam.setMaximumDistance(5000);
 
 		controls = new Controls(this);
 		controls.setParameters();
@@ -87,16 +87,16 @@ public class Fiddling extends PApplet {
 
 		cameraCenter = new Vec3D();
 		avg = new Vec3D();
-		globalOffset = new Vec3D(0, 1.f / 3, 2.f / 3);
+		globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
 		particles = new Vector();
-		n = 300;
-		for (int i = 0; i < n; i++)
-			particles.add(new Particle(this));
+//		n = 300;
+//		for (int i = 0; i < n; i++)
+//			particles.add(new Particle(this));
 
 		noStroke();
 		rot = new PVector((float) 2.4699998, (float) 6.4400015, (float) 0.0);
-		y0 = -250;
+		y0 = -400;
 		tran = new PVector(0, y0, 0);
 		
 		
@@ -127,18 +127,18 @@ public class Fiddling extends PApplet {
 	public void draw() {
 		kinect.update();
 		// PImage curImage = kinect.depthImage();
-		background(29);
+		background(19);
 		lights();
 		fill(66);
 		noStroke();
 		translate(tran.x, tran.y, tran.z);
-		sphere(2 * buildingRadius);
-		fill(113);
+//		sphere(2 * buildingRadius);
+		fill(93);
 		beginShape(QUADS);
-		vertex(-2 * buildingRadius, 1000, -2 * buildingRadius);
-		vertex(-2 * buildingRadius, 1000, 2 * buildingRadius);
-		vertex(2 * buildingRadius, 1000, 2 * buildingRadius);
-		vertex(2 * buildingRadius, 1000, -2 * buildingRadius);
+		vertex(-2 * buildingRadius, 1500, -2 * buildingRadius);
+		vertex(-2 * buildingRadius, 1500, 2 * buildingRadius);
+		vertex(2 * buildingRadius, 1500, 2 * buildingRadius);
+		vertex(2 * buildingRadius, 1500, -2 * buildingRadius);
 		endShape();
 		if (!noLines) {
 			stroke(255, 0, 0);
@@ -181,30 +181,33 @@ public class Fiddling extends PApplet {
 			}
 			// text("z: "+center.z, 700, 10,
 			// 600, 200);
-			blocksize = (int) map(center.z, 800, 1900, 1, 100);
-			buildingRadius = (int) map(userList.size(), 1, 5, 900, 3000);
-			tran.y = (int) map(center.y, 0, -180, y0-200, y0+500);
+			blocksize = (int) map(center.z, 800, 2600, 100, 5);
+			buildingRadius = (int) map(userList.size(), 1, 6, 1500, 6000);
+			tran.y = (int) map(center.y, 0, -180, y0-50, y0+300);
 		} else {
 			// viewers = new Viewers();
 			// viewers.clear();
 			serial.write((byte) 0);
+			buildingRadius = 1500;
+			blocksize = 10;
+//			tran.y = y0;
 			// println("cleared viewers");
 		}
 		eimages.render(threshHold);
-		if (millis() - cloudTimer > 10) {
-			cloudTimer = millis();
-			cloudDraw();
-		}
+//		if (millis() - cloudTimer > 10) {
+//			cloudTimer = millis();
+//			cloudDraw();
+//		}
 	}
 
 	public void track(byte iout) {
 		if (abs(iout) > 2) {
-			rot.x -= iout * .03;
+			rot.x -= iout * .05;
 		}
 	}
 
 	public void sendSerial(byte out) {
-		if (abs(out) > 2) {
+		if (abs(out) > 1) {
 			if (out < 0) {
 				out = (byte) abs(out);
 				out += 20;

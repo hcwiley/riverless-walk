@@ -53,12 +53,12 @@ public class Controls {
         control.addSlider("turbulence", 0, 4, parent.turbulence, 10, y += 10,
                 256, 9).setWindow(w);
         control.addToggle("paused", false, 10, y += 35, 9, 9).setWindow(w);
-        control.addSlider("blocksize", (int)0, (int)700, (int)parent.blocksize, 10,
-                y += 10, 256, 9).setWindow(w);
+//        control.addSlider("blocksize", (int)0, (int)700, (int)parent.blocksize, 10,
+//                y += 10, 256, 9).setWindow(w);
         control.addSlider("theta", (float)0, (float)10, (float)parent.theta, 10,
                 y += 15, 256, 9).setWindow(w);
-        control.addSlider("buildingRadius", (int)400, (int)3000, (int)parent.buildingRadius, 10,
-                y += 15, 256, 9).setWindow(w);
+//        control.addSlider("buildingRadius", (int)400, (int)3000, (int)parent.buildingRadius, 10,
+//                y += 15, 256, 9).setWindow(w);
         control.setAutoInitialization(true);
         
     }
