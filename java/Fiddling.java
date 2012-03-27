@@ -66,10 +66,11 @@ public class Fiddling extends PApplet {
 	EImages eimages;
 	int threshHold = 180;
 	float scale = 1;
-	int NUM_EIMAGES = 4;
+	int NUM_EIMAGES = 1;
 	PVector center;
 
 	boolean noLines = true;
+	boolean threadsRunning = false;
 
 	public void setup() {
 		this.size(1024, 768, OPENGL);
@@ -90,16 +91,15 @@ public class Fiddling extends PApplet {
 		globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
 		particles = new Vector();
-//		n = 300;
-//		for (int i = 0; i < n; i++)
-//			particles.add(new Particle(this));
+		// n = 300;
+		// for (int i = 0; i < n; i++)
+		// particles.add(new Particle(this));
 
 		noStroke();
-		rot = new PVector((float) 2.4699998, (float) 6.4400015, (float) 0.0);
+		rot = new PVector(0,0,0);//(float) 2.4699998, (float) 6.4400015, (float) 0.0);
 		y0 = -400;
 		tran = new PVector(0, y0, 0);
-		
-		
+
 		// kinect and viewer stuff, as they are related
 		kinect = new SimpleOpenNI(this);
 		kinect.enableDepth();
@@ -113,13 +113,15 @@ public class Fiddling extends PApplet {
 		// getting all my extrudeimages setup
 		eimages = new EImages();
 		for (int i = 0; i < NUM_EIMAGES; i++) {
-			eimages.add(new EImage(this, "img" + i + ".jpg"));
+			eimages.add(new EImage(this, "img" + i + ".jpg", (byte)i));
+			eimages.setThread(i);
 		}
 
 		serial = new Serial(this, Serial.list()[0], 9600);
 		while (serial.available() < 1) {
 		}
 		println(serial.readString());
+
 	}
 
 	int cloudTimer = millis();
@@ -132,7 +134,7 @@ public class Fiddling extends PApplet {
 		fill(66);
 		noStroke();
 		translate(tran.x, tran.y, tran.z);
-//		sphere(2 * buildingRadius);
+		// sphere(2 * buildingRadius);
 		fill(93);
 		beginShape(QUADS);
 		vertex(-2 * buildingRadius, 1500, -2 * buildingRadius);
@@ -183,21 +185,25 @@ public class Fiddling extends PApplet {
 			// 600, 200);
 			blocksize = (int) map(center.z, 800, 2600, 100, 5);
 			buildingRadius = (int) map(userList.size(), 1, 6, 1500, 6000);
-			tran.y = (int) map(center.y, 0, -180, y0-50, y0+300);
+			tran.y = (int) map(center.y, 0, -180, y0 - 50, y0 + 300);
 		} else {
 			// viewers = new Viewers();
 			// viewers.clear();
 			serial.write((byte) 0);
 			buildingRadius = 1500;
 			blocksize = 10;
-//			tran.y = y0;
+			// tran.y = y0;
 			// println("cleared viewers");
 		}
-		eimages.render(threshHold);
-//		if (millis() - cloudTimer > 10) {
-//			cloudTimer = millis();
-//			cloudDraw();
-//		}
+		if (!threadsRunning) {
+			threadsRunning = !threadsRunning;
+			for (int i = 0; i < NUM_EIMAGES; i++)
+				eimages.runThread(i);
+		}
+		// if (millis() - cloudTimer > 10) {
+		// cloudTimer = millis();
+		// cloudDraw();
+		// }
 	}
 
 	public void track(byte iout) {
