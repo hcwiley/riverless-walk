@@ -3,56 +3,84 @@ import processing.core.*;
 
 class EImage {
     PImage extrude;
-    byte[] values;
+    int[] values;
     Fiddling parent;
+    int[] position;
+    int forDelta;
 
     EImage(Fiddling sce, String file) {
         parent = sce;
+        position = new int[3];
         extrude = parent.loadImage(file);
         extrude.loadPixels();
-        values = new byte[extrude.width*extrude.height];
-        for (int y = 0; y < extrude.height; y++) {
-            for (int x = 0; x < extrude.width; x++) {
-                values[x+y] = (byte) (parent.brightness((int) extrude
-                        .get(x, y)));
+        forDelta = 5;
+        values = new int[extrude.width * extrude.height];
+        for (int x = forDelta; x < extrude.width; x += forDelta) {
+            for (int y = forDelta; y < extrude.height; y += forDelta) {
+                values[(x * extrude.width) + y] = (byte) (parent
+                        .brightness((int) extrude.get(x, y)));
+                for (int d = 0; d < forDelta; d++) {
+                    values[(x * extrude.width) + y] += (byte) (parent
+                            .brightness((int) extrude.get(x - d, y - d)));
+                }
+                values[(x * extrude.width) + y] /= forDelta;
+
             }
         }
     }
 
-    void render(int offset, int total, int threshHold, int blockSpacing) {
+    boolean render(int offset, int total, int threshHold, int blockSpacing) {
         float theta = parent.theta * offset;// parent.map(offset, 0, total, 0,
                                             // 180);
         // System.out.println(parent.thetaDelta);
-        double delta = (double) parent.theta * 0.01;// parent.map(1, 0, 360, 0,
+        float delta = (float) (parent.thetaDelta * 0.01);// parent.map(1, 0, 360, 0,
                                                     // extrude.width);
-        for (int x = 0; x < extrude.width; x += 5) {
-            for (int y = 0; y < extrude.height; y+= 5) {
+        for (int x = forDelta; x < extrude.width - forDelta * 2; x += forDelta) {
+            for (int y = forDelta; y < extrude.height - forDelta * 2; y += forDelta) {
                 int r = parent.buildingRadius;
-                if (values[x+y] < threshHold) {
-                    int inverted = (int) (Fiddling.map((int) values[x+y], 0,
-                            threshHold, 255, 150));
+                if (values[(x * extrude.width) + y] < threshHold) {
+                    int inverted = (int) (Fiddling.map(
+                            (int) values[(x * extrude.width) + y], 0,
+                            threshHold, 255, 0));
                     // parent.stroke(inverted);
                     parent.noStroke();
                     // parent.fill(inverted);
-                    r += values[x+y] * 2;
+                    r += values[(x * extrude.width) + y] * forDelta;
                     int ymult = (int) Fiddling.map(parent.buildingRadius, 400,
                             3000, 4, 18);
-                    Cube.drawCube(r * Fiddling.cos(theta), y * ymult
-                            - parent.buildingRadius - (300 - extrude.height), r * Fiddling.sin(theta),
+//                    if (x > extrude.width / 2 - forDelta - 2
+//                            || x < extrude.width / 2 + forDelta + 2) {
+////                        System.out.println("image at: " + position[0] + ", "
+////                                + position[1] + ", " + position[2]);
+//                    }
+                    position[0] = (int) (r * Fiddling.cos(theta));
+                    position[1] = y * ymult - parent.buildingRadius
+                            - (300 - extrude.height);
+                    position[2] = (int) (r * Fiddling.sin(theta));
+                    Cube.drawCube(position[0], position[1], position[2],
                             parent.blocksize, inverted, parent, blockSpacing);
                 }
             }
             theta += delta;
         }
+        if (parent.cam.getLookAt()[0] == position[0]
+                || parent.cam.getLookAt()[1] == position[1]
+                || parent.cam.getLookAt()[2] == position[2])
+            return true;
+        else
+            return false;
 
     }
 }
 
 class EImages extends ArrayList<EImage> {
-    public void render(int threshHold, int blockSpacing) {
+    public byte render(int threshHold, int blockSpacing) {
+        byte index = -1;
         for (int i = 0; i < this.size(); i++) {
-            this.get(i).render(i, this.size(), threshHold, blockSpacing);
+            if (this.get(i).render(i, this.size(), threshHold, blockSpacing))
+                index = (byte) i;
         }
+        return index;
     }
 }
 

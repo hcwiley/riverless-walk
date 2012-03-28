@@ -18,20 +18,6 @@ import toxi.geom.*;
 
 public class Fiddling extends PApplet {
 
-    public static void main(String args[]) {
-        Fiddling theApplet = new Fiddling();
-        theApplet.init(); // Needed if overridden in applet
-        theApplet.start(); // Needed if overridden in applet
-
-        // ... Create a window (JFrame) and make applet the content pane.
-        JFrame window = new JFrame("riverless walk");
-        window.setContentPane(theApplet);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.pack(); // Arrange the components.
-        System.out.println(theApplet.getSize());
-        window.setVisible(true); // Make the window visible
-    }
-
     public Fiddling() {
 
     }
@@ -55,7 +41,6 @@ public class Fiddling extends PApplet {
 
     PVector rot, tran, modelTran;
     int y0;
-    // GL gl;
     // Kinect
     SimpleOpenNI kinect;
     // Minim mic;
@@ -73,14 +58,18 @@ public class Fiddling extends PApplet {
     boolean isBlu = true;
 
     public void setup() {
-        this.size(1400, 1240, OPENGL);
+        this.size(1400, 1240, P3D   );
+        
         frameRate(25);
-        // gl = ((PGraphicsOpenGL) g).gl;
+        
+        if (NUM_EIMAGES == 6) {
+            thetaDelta = (float) 3.35;
+            theta = (float) 5.27;
+        }
         // println(gl);
-        // mm.setQueueSize(50, 100);
         cam = new PeasyCam(this, 1700);
         cam.setMinimumDistance(300);
-        cam.setMaximumDistance(6000);
+        cam.setMaximumDistance(7000);
         cam.rotateY(30);
 
         controls = new Controls(this);
@@ -92,9 +81,9 @@ public class Fiddling extends PApplet {
         globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
         particles = new Vector();
-         n = 300;
-         for (int i = 0; i < n; i++)
-         particles.add(new Particle(this));
+        n = 300;
+        for (int i = 0; i < n; i++)
+            particles.add(new Particle(this));
 
         noStroke();
         rot = new PVector();// new PVector((float) 2.4699998, (float) 6.4400015,
@@ -144,24 +133,28 @@ public class Fiddling extends PApplet {
         kinect.getUsers(userList);
         if (userList.size() > 0) {
             background(19);
-             lightFalloff(1,falloff,0);
-             ambientLight(255, 255, 255, 0, 2*buildingRadius, 0);
-//            lightSpecular(255, 255, 255);
-            // ambientLight(255, 255, 255, 0, -2*buildingRadius, 0);
-//            specular(falloff);
-            // shininess(falloff);
+            lightFalloff((float) 0.8, (float) 0.2, 0);
+            // ambientLight(255, 255, 255, 0, 2*buildingRadius, 0);
+            // lightSpecular(255, 255, 255);
+            lights();
+            // specular(falloff);
             fill(66);
             noStroke();
+            translate(0, buildingRadius + 3000, 0);
+            shininess(255);
+            sphere(buildingRadius + 2800);
+            // ambientLight(255, 255, 255, 0, buildingRadius + 5000, 0);
+            translate(0, -1 * (buildingRadius + 3000), 0);
             translate(tran.x, tran.y, tran.z);
-            // sphere(2 * buildingRadius);
-//            fill(93);
-//            beginShape(QUADS);
-//            // texture(curImage);
-//            vertex(-10 * buildingRadius, 1500, -10 * buildingRadius);
-//            vertex(-10 * buildingRadius, 1500, 10 * buildingRadius);
-//            vertex(10 * buildingRadius, 1500, 10 * buildingRadius);
-//            vertex(10 * buildingRadius, 1500, -10 * buildingRadius);
-//            endShape();
+            shininess(0);
+            // fill(93);
+            // beginShape(QUADS);
+            // // texture(curImage);
+            // vertex(-10 * buildingRadius, 1500, -10 * buildingRadius);
+            // vertex(-10 * buildingRadius, 1500, 10 * buildingRadius);
+            // vertex(10 * buildingRadius, 1500, 10 * buildingRadius);
+            // vertex(10 * buildingRadius, 1500, -10 * buildingRadius);
+            // endShape();
             if (!noLines) {
                 stroke(255, 0, 0);
                 line(-5000, 0, 0, 5000, 0, 0);
@@ -208,17 +201,18 @@ public class Fiddling extends PApplet {
             // tran.y = y0;
             // println("cleared viewers");
         }
-//        float[] rotations = cam.getRotations();
-//        rotateX(rotations[0]);
-//        rotateY(rotations[1]);
-//        rotateZ(rotations[2]);
-////        cloudDraw();
-//        // if (millis() - cloudTimer > 0) {
-//        // cloudTimer = millis();
-//        fill(255);
-//        stroke(255);
-//        float[] pos = cam.getPosition();
-//        text("cam looking here: " + pos[0]+", "+pos[1]+", "+pos[2], 100, 100, 300, 300);
+        // float[] rotations = cam.getRotations();
+        // rotateX(rotations[0]);
+        // rotateY(rotations[1]);
+        // rotateZ(rotations[2]);
+        // // cloudDraw();
+        // // if (millis() - cloudTimer > 0) {
+        // // cloudTimer = millis();
+        // fill(255);
+        // stroke(255);
+        // float[] pos = cam.getPosition();
+        // text("cam looking here: " + pos[0]+", "+pos[1]+", "+pos[2], 100, 100,
+        // 300, 300);
         // }
         // image(curImage, 0, 0);
     }
@@ -290,14 +284,14 @@ public class Fiddling extends PApplet {
         while (particles.size() < n)
             particles.add(new Particle(this));
         // original
-//        globalOffset.addSelf(turbulence / neighborhood, turbulence
-//                / neighborhood, turbulence / neighborhood);
+        // globalOffset.addSelf(turbulence / neighborhood, turbulence
+        // / neighborhood, turbulence / neighborhood);
         // int r = 1800;
         // for(int theta=0; theta < 360; theta+=10) {
         // globalOffset.addSelf(r*cos(theta), 400,r*sin(theta));
         // }
         float[] pos = cam.getPosition();
-         globalOffset.addSelf(pos[0], pos[1],pos[2]);
+        globalOffset.addSelf(pos[0], pos[1], pos[2]);
     }
 
     public void keyPressed() {
