@@ -57,8 +57,8 @@ public class Controls {
 //                y += 10, 256, 9).setWindow(w);
         control.addSlider("theta", (float)0, (float)10, (float)parent.theta, 10,
                 y += 15, 256, 9).setWindow(w);
-//        control.addSlider("buildingRadius", (int)400, (int)3000, (int)parent.buildingRadius, 10,
-//                y += 15, 256, 9).setWindow(w);
+        control.addSlider("falloff", (float)0, (float)1, (int)parent.falloff, 10,
+                y += 15, 256, 9).setWindow(w);
         control.setAutoInitialization(true);
         
     }
