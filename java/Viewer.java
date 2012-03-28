@@ -20,7 +20,7 @@ class Viewer {
         curMillis = parent.millis();
         speed = (pos.x - position.x) / (curMillis - lastMillis);
         if (speed != 0){
-        speed = Fiddling.map(speed*100, 0, (float)7, 0, 70);
+        speed = Fiddling.map(speed*100, 0, (float)5, 0, 20);
         }
         position = pos;
         lastMillis = curMillis;

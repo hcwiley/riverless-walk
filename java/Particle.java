@@ -35,8 +35,8 @@ class Particle {
                 .getDistanceToPoint(position);
         distanceToFocalPlane *= 1 / parent.dofRatio;
         distanceToFocalPlane = parent.constrain(distanceToFocalPlane, 1, 15);
-        parent.strokeWeight(distanceToFocalPlane);
-        parent.stroke(170, parent.constrain(
+        parent.strokeWeight((float) (distanceToFocalPlane*1.5));
+        parent.stroke(180, parent.constrain(
                 255 / (distanceToFocalPlane * distanceToFocalPlane), 1, 255));
         parent.point(position.x, position.y, position.z);
     }
@@ -45,11 +45,13 @@ class Particle {
         force.addSelf((float) (parent.noise(position.x / parent.neighborhood
                 + parent.globalOffset.x + localOffset.x * parent.independence,
                 position.y / parent.neighborhood, position.z
-                        / parent.neighborhood) - .5), (float) (parent.noise(
+                        / parent.neighborhood) - .5), 
+            (float) (parent.noise(
                 position.x / parent.neighborhood, position.y
                         / parent.neighborhood + parent.globalOffset.y
                         + localOffset.y * parent.independence, position.z
-                        / parent.neighborhood) - .5), (float) (parent.noise(
+                        / parent.neighborhood) - .5),
+            (float) (parent.noise(
                 position.x / parent.neighborhood, position.y
                         / parent.neighborhood, position.z / parent.neighborhood
                         + parent.globalOffset.z + localOffset.z

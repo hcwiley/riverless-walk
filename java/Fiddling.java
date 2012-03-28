@@ -11,9 +11,8 @@ import processing.serial.*;
 //import processing.opengl.*;
 import SimpleOpenNI.*;
 import java.util.Vector;
-
 import javax.swing.*;
-
+//import processing.
 import peasy.*;
 import toxi.geom.*;
 
@@ -52,21 +51,22 @@ public class Fiddling extends PApplet {
     float theta = (float) 1.64;
     int blocksize = 5;
     int buildingRadius = 1500;
+    float falloff;
 
     PVector rot, tran, modelTran;
     int y0;
     // GL gl;
     // Kinect
     SimpleOpenNI kinect;
-
+    // Minim mic;
     Serial serial;
     Viewers viewers;
     IntVector userList;
     PFont font;
     EImages eimages;
-    int threshHold = 180;
+    int threshHold = 130;
     float scale = 1;
-    int NUM_EIMAGES = 4;
+    int NUM_EIMAGES = 6;
     PVector center;
 
     boolean noLines = true;
@@ -78,9 +78,10 @@ public class Fiddling extends PApplet {
         // gl = ((PGraphicsOpenGL) g).gl;
         // println(gl);
         // mm.setQueueSize(50, 100);
-        cam = new PeasyCam(this, 1200);
+        cam = new PeasyCam(this, 1700);
         cam.setMinimumDistance(300);
         cam.setMaximumDistance(6000);
+        cam.rotateY(30);
 
         controls = new Controls(this);
         controls.setParameters();
@@ -91,19 +92,21 @@ public class Fiddling extends PApplet {
         globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
         particles = new Vector();
-        // n = 300;
-        // for (int i = 0; i < n; i++)
-        // particles.add(new Particle(this));
+         n = 300;
+         for (int i = 0; i < n; i++)
+         particles.add(new Particle(this));
 
         noStroke();
         rot = new PVector();// new PVector((float) 2.4699998, (float) 6.4400015,
                             // (float) 0.0);
         y0 = -400;
         tran = new PVector(0, y0, 0);
+        falloff = 0;
 
         // kinect and viewer stuff, as they are related
         kinect = new SimpleOpenNI(this);
         kinect.enableDepth();
+        kinect.enableRGB();
         kinect.setMirror(true);
         kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
         viewers = new Viewers();
@@ -122,15 +125,18 @@ public class Fiddling extends PApplet {
             }
             println(serial.readString());
         }
+
     }
 
     int cloudTimer = millis();
 
     public void draw() {
-        // PImage curImage = kinect.depthImage();
-        // sphere(1200);
+        PImage curImage = kinect.rgbImage();
+        //
+        // sphere((float) (buildingRadius * 1.7));
         rotateX(rot.y);
-        rotateY(rot.x);
+        cam.rotateY(rot.x);
+        rot.x = 0;
         rotateZ(rot.z);
         // image(kinect.depthImage(), 0, 0);
         kinect.update();
@@ -138,18 +144,24 @@ public class Fiddling extends PApplet {
         kinect.getUsers(userList);
         if (userList.size() > 0) {
             background(19);
-            lights();
+             lightFalloff(1,falloff,0);
+             ambientLight(255, 255, 255, 0, 2*buildingRadius, 0);
+//            lightSpecular(255, 255, 255);
+            // ambientLight(255, 255, 255, 0, -2*buildingRadius, 0);
+//            specular(falloff);
+            // shininess(falloff);
             fill(66);
             noStroke();
             translate(tran.x, tran.y, tran.z);
             // sphere(2 * buildingRadius);
-            fill(93);
-            beginShape(QUADS);
-            vertex(-2 * buildingRadius, 1500, -2 * buildingRadius);
-            vertex(-2 * buildingRadius, 1500, 2 * buildingRadius);
-            vertex(2 * buildingRadius, 1500, 2 * buildingRadius);
-            vertex(2 * buildingRadius, 1500, -2 * buildingRadius);
-            endShape();
+//            fill(93);
+//            beginShape(QUADS);
+//            // texture(curImage);
+//            vertex(-10 * buildingRadius, 1500, -10 * buildingRadius);
+//            vertex(-10 * buildingRadius, 1500, 10 * buildingRadius);
+//            vertex(10 * buildingRadius, 1500, 10 * buildingRadius);
+//            vertex(10 * buildingRadius, 1500, -10 * buildingRadius);
+//            endShape();
             if (!noLines) {
                 stroke(255, 0, 0);
                 line(-5000, 0, 0, 5000, 0, 0);
@@ -184,7 +196,7 @@ public class Fiddling extends PApplet {
             blocksize = (int) map(center.z, 800, 2600, 100, 5);
             buildingRadius = (int) map(userList.size(), 1, 6, 1500, 6000);
             tran.y = (int) map(center.y, 0, -180, y0 - 200, y0 + 200);
-            
+
             eimages.render(threshHold, viewers.speed());
         } else {
             // viewers = new Viewers();
@@ -196,13 +208,28 @@ public class Fiddling extends PApplet {
             // tran.y = y0;
             // println("cleared viewers");
         }
-        // if (millis() - cloudTimer > 10) {
-        // cloudTimer = millis();
-        // cloudDraw();
+//        float[] rotations = cam.getRotations();
+//        rotateX(rotations[0]);
+//        rotateY(rotations[1]);
+//        rotateZ(rotations[2]);
+////        cloudDraw();
+//        // if (millis() - cloudTimer > 0) {
+//        // cloudTimer = millis();
+//        fill(255);
+//        stroke(255);
+//        float[] pos = cam.getPosition();
+//        text("cam looking here: " + pos[0]+", "+pos[1]+", "+pos[2], 100, 100, 300, 300);
         // }
+        // image(curImage, 0, 0);
     }
 
     public void track(byte iout) {
+        if (isBlu) {
+            if (abs(iout) > 2) {
+                // rot.x -= iout * .001;
+            }
+            return;
+        }
         if (abs(iout) > 2) {
             rot.x -= iout * .05;
         }
@@ -263,13 +290,14 @@ public class Fiddling extends PApplet {
         while (particles.size() < n)
             particles.add(new Particle(this));
         // original
-        globalOffset.addSelf(turbulence / neighborhood, turbulence
-                / neighborhood, turbulence / neighborhood);
+//        globalOffset.addSelf(turbulence / neighborhood, turbulence
+//                / neighborhood, turbulence / neighborhood);
         // int r = 1800;
         // for(int theta=0; theta < 360; theta+=10) {
         // globalOffset.addSelf(r*cos(theta), 400,r*sin(theta));
         // }
-        // globalOffset.addSelf(1500,600, 1500);
+        float[] pos = cam.getPosition();
+         globalOffset.addSelf(pos[0], pos[1],pos[2]);
     }
 
     public void keyPressed() {
@@ -285,9 +313,9 @@ public class Fiddling extends PApplet {
         else if (key == 't')
             tran.z -= 15;
         else if (key == 'y')
-            tran.y += 15;
+            y0 += 15;
         else if (key == 'h')
-            tran.y -= 15;
+            y0 -= 15;
         else if (key == '+')
             threshHold += 10;
         else if (key == '=')
