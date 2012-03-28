@@ -3,17 +3,17 @@ import processing.core.*;
 
 class EImage {
     PImage extrude;
-    byte[][] values;
+    byte[] values;
     Fiddling parent;
 
     EImage(Fiddling sce, String file) {
         parent = sce;
         extrude = parent.loadImage(file);
         extrude.loadPixels();
-        values = new byte[extrude.width][extrude.height];
+        values = new byte[extrude.width*extrude.height];
         for (int y = 0; y < extrude.height; y++) {
             for (int x = 0; x < extrude.width; x++) {
-                values[x][y] = (byte) (parent.brightness((int) extrude
+                values[x+y] = (byte) (parent.brightness((int) extrude
                         .get(x, y)));
             }
         }
@@ -26,27 +26,21 @@ class EImage {
         double delta = (double) parent.theta * 0.01;// parent.map(1, 0, 360, 0,
                                                     // extrude.width);
         for (int x = 0; x < extrude.width; x += 5) {
-            for (int y = 0; y < extrude.height; y += 5) {
+            for (int y = 0; y < extrude.height; y+= 5) {
                 int r = parent.buildingRadius;
-                if (values[x][y] < threshHold) {
-                    int inverted = (int) (Fiddling.map((int) values[x][y], 0,
+                if (values[x+y] < threshHold) {
+                    int inverted = (int) (Fiddling.map((int) values[x+y], 0,
                             threshHold, 255, 150));
                     // parent.stroke(inverted);
                     parent.noStroke();
                     // parent.fill(inverted);
-                    r += values[x][y] * 2;
+                    r += values[x+y] * 2;
                     int ymult = (int) Fiddling.map(parent.buildingRadius, 400,
                             3000, 4, 18);
                     Cube.drawCube(r * Fiddling.cos(theta), y * ymult
-                            - parent.buildingRadius, r * Fiddling.sin(theta),
+                            - parent.buildingRadius - (300 - extrude.height), r * Fiddling.sin(theta),
                             parent.blocksize, inverted, parent, blockSpacing);
                 }
-                /*
-                 * else{ stroke(values[x][y],values[x][y],values[x][y],.6);
-                 * fill(values[x][y],values[x][y],values[x][y],.6); r +=
-                 * values[x][y]; float px = r*cos(theta); float pz =
-                 * r*sin(theta); vertex(px, y*4-1000, pz); }
-                 */
             }
             theta += delta;
         }
