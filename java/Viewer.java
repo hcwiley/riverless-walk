@@ -19,6 +19,9 @@ class Viewer {
     void updatePosition(PVector pos) {
         curMillis = parent.millis();
         speed = (pos.x - position.x) / (curMillis - lastMillis);
+        if (speed != 0){
+        speed = Fiddling.map(speed*100, 0, (float)7, 0, 70);
+        }
         position = pos;
         lastMillis = curMillis;
     }
@@ -43,5 +46,12 @@ class Viewers extends ArrayList<Viewer> {
     	center.y /= this.size();
     	center.z /= this.size();
     	return center;
+    }
+    byte speed(){
+        byte speed = 0;
+        for(int i = 0; i < this.size(); i++){
+            speed += (byte)this.get(i).speed*10;
+        }
+        return speed;
     }
 }
