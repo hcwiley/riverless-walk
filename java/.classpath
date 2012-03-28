@@ -56,5 +56,12 @@
 	<classpathentry kind="lib" path="libraries/toxiclibscore.jar"/>
 	<classpathentry kind="lib" path="libraries/verletphysics.jar"/>
 	<classpathentry kind="lib" path="libraries/volumeutils.jar"/>
+	<classpathentry kind="lib" path="libraries/minim.jar"/>
+	<classpathentry kind="lib" path="libraries/jl1.0.jar"/>
+	<classpathentry kind="lib" path="libraries/jsminim.jar"/>
+	<classpathentry kind="lib" path="libraries/minim-spi.jar"/>
+	<classpathentry kind="lib" path="libraries/mp3spi1.9.4.jar"/>
+	<classpathentry kind="lib" path="libraries/tritonus_aos.jar"/>
+	<classpathentry kind="lib" path="libraries/tritonus_share.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
