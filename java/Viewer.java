@@ -20,10 +20,12 @@ class Viewer {
 
     void updatePosition(PVector pos) {
         curMillis = parent.millis();
-        speed = (pos.x - position.x) / (curMillis - lastMillis);
-        if (speed != 0) {
-            speed = Fiddling.map(speed * 100, 0, (float) 10, 0, 20);
+        speed = Fiddling.abs((pos.x - position.x) / (curMillis - lastMillis));
+        if (speed > 0.01) {
+        	speed = Fiddling.map(speed, 0, 1, 0, 30);
         }
+        else
+        	speed = 0;
         position = pos;
         lastMillis = curMillis;
     }

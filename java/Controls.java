@@ -8,7 +8,7 @@ public class Controls {
     public Controls(Fiddling par) {
         parent = par;
     }
-
+/*
     void setParameters() {
         parent.n = 10000;
         parent.dofRatio = 50;
@@ -23,7 +23,6 @@ public class Controls {
         parent.cameraRate = (float) .1;
         parent.averageRebirth = false;
     }
-
     void makeControls() {
         control = new ControlP5(parent);
 
@@ -65,4 +64,5 @@ public class Controls {
         
     }
 
+ */
 }

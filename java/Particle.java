@@ -20,7 +20,6 @@ class Particle {
         force = new Vec3D();
         localOffset = Vec3D.randomVector();
     }
-
     void resetPosition() {
         position = Vec3D.randomVector();
         position.scaleSelf(random(parent.rebirthRadius));
