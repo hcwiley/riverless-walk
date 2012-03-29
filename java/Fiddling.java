@@ -55,7 +55,7 @@ public class Fiddling extends PApplet {
     PVector center;
 
     boolean noLines = true;
-    boolean isBlu = true;
+    boolean isBlu = false;
 
     public void setup() {
         this.size(1400, 1240, P3D   );
@@ -81,9 +81,9 @@ public class Fiddling extends PApplet {
         globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
         particles = new Vector();
-        n = 300;
-        for (int i = 0; i < n; i++)
-            particles.add(new Particle(this));
+//        n = 300;
+//        for (int i = 0; i < n; i++)
+//            particles.add(new Particle(this));
 
         noStroke();
         rot = new PVector();// new PVector((float) 2.4699998, (float) 6.4400015,
