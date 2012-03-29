@@ -13,7 +13,7 @@ class EImage {
         position = new int[3];
         extrude = parent.loadImage(file);
         extrude.loadPixels();
-        forDelta = 5;
+        forDelta = 10;
         values = new int[extrude.width * extrude.height];
         for (int x = forDelta; x < extrude.width; x += forDelta) {
             for (int y = forDelta; y < extrude.height; y += forDelta) {
@@ -32,7 +32,7 @@ class EImage {
     boolean render(int offset, int total, int threshHold, int blockSpacing) {
         float theta = parent.theta * offset;// parent.map(offset, 0, total, 0,
                                             // 180);
-        // System.out.println(parent.thetaDelta);
+//         System.out.println(blockSpacing);
         float delta = (float) (parent.thetaDelta * 0.01);// parent.map(1, 0, 360, 0,
                                                     // extrude.width);
         for (int x = forDelta; x < extrude.width - forDelta * 2; x += forDelta) {
@@ -41,7 +41,7 @@ class EImage {
                 if (values[(x * extrude.width) + y] < threshHold) {
                     int inverted = (int) (Fiddling.map(
                             (int) values[(x * extrude.width) + y], 0,
-                            threshHold, 255, 0));
+                            255, 255, 0));
                     // parent.stroke(inverted);
                     parent.noStroke();
                     // parent.fill(inverted);
@@ -57,8 +57,15 @@ class EImage {
                     position[1] = y * ymult - parent.buildingRadius
                             - (300 - extrude.height);
                     position[2] = (int) (r * Fiddling.sin(theta));
-                    Cube.drawCube(position[0], position[1], position[2],
+//                    parent.strokeWeight(Fiddling.map(blockSpacing, 0, 20, 0,3));
+//                    Fiddling.println(blockSpacing);
+                    parent.stroke(Fiddling.map(blockSpacing, -15, 15, 0, 255));
+                  parent.fill(inverted);
+                    Cube.drawCube(position[0], -position[1], position[2],
                             parent.blocksize, inverted, parent, blockSpacing);
+                }
+                else{
+                    parent.noStroke();
                 }
             }
             theta += delta;
@@ -87,10 +94,12 @@ class EImages extends ArrayList<EImage> {
 abstract class Cube {
     static void drawCube(float x, float y, float z, float r, int color,
             Fiddling parent, int blockSpacing) {
+        parent.fill(color);
+        parent.noStroke();
+        parent.smooth();
+//        parent.stroke(color);
         parent.beginShape(Fiddling.QUADS);
         // face 1
-        parent.fill(color);
-        parent.stroke(color);
         parent.vertex(x, y, z);
         parent.vertex(x, y - r, z);
         parent.vertex(x - r, y - r, z);

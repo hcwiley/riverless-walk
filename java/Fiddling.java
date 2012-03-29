@@ -25,19 +25,22 @@ public class Fiddling extends PApplet {
     // Particle Cloud stuff
 
     Vec3D globalOffset, avg, cameraCenter;
-    public float neighborhood, viscosity, speed, turbulence, cameraRate,
-            rebirthRadius, spread, independence, dofRatio;
-    public int n, rebirth;
-    public boolean averageRebirth, paused;
-    Vector particles;
+//    public float neighborhood, viscosity, speed, turbulence, cameraRate,
+//            rebirthRadius, spread, independence, dofRatio;
+//    public int n, rebirth;
+//    public boolean averageRebirth, paused;
+//    Vector particles;
     Plane focalPlane;
     PeasyCam cam;
-    Controls controls;
-    float thetaDelta = (float) 1.64;
-    float theta = (float) 1.64;
-    int blocksize = 5;
-    int buildingRadius = 1500;
-    float falloff;
+//    Controls controls;
+    static float thetaDelta = (float) 1.64;
+    static float theta = (float) 1.64;
+    static int blocksize = 5;
+    static int buildingRadius = 1500;
+    static float falloff;
+    static float camD0;
+    static float camDMax;
+    static float camDMin;
 
     PVector rot, tran, modelTran;
     int y0;
@@ -47,7 +50,7 @@ public class Fiddling extends PApplet {
     Serial serial;
     Viewers viewers;
     IntVector userList;
-    PFont font;
+//    PFont font;
     EImages eimages;
     int threshHold = 130;
     float scale = 1;
@@ -58,32 +61,35 @@ public class Fiddling extends PApplet {
     boolean isBlu = true;
 
     public void setup() {
-        this.size(1400, 1240, P3D   );
-        
+        this.size(1024, 768, P3D);
+
         frameRate(25);
-        
+
         if (NUM_EIMAGES == 6) {
             thetaDelta = (float) 3.35;
             theta = (float) 5.27;
         }
         // println(gl);
-        cam = new PeasyCam(this, 1700);
-        cam.setMinimumDistance(300);
-        cam.setMaximumDistance(7000);
+        camD0 = 1400;
+        camDMax = 7000;
+        camDMin = 400;
+        cam = new PeasyCam(this, camD0);
+        cam.setMinimumDistance(camDMin);
+        cam.setMaximumDistance(camDMax);
         cam.rotateY(30);
-
-        controls = new Controls(this);
-        controls.setParameters();
-        controls.makeControls();
+//
+//        controls = new Controls(this);
+//        controls.setParameters();
+//        controls.makeControls();
 
         cameraCenter = new Vec3D();
         avg = new Vec3D();
         globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
 
-        particles = new Vector();
-        n = 300;
-        for (int i = 0; i < n; i++)
-            particles.add(new Particle(this));
+//        particles = new Vector();
+//        n = 300;
+//        for (int i = 0; i < n; i++)
+//            particles.add(new Particle(this));
 
         noStroke();
         rot = new PVector();// new PVector((float) 2.4699998, (float) 6.4400015,
@@ -133,19 +139,26 @@ public class Fiddling extends PApplet {
         kinect.getUsers(userList);
         if (userList.size() > 0) {
             background(19);
-            lightFalloff((float) 0.8, (float) 0.2, 0);
+            // lightFalloff(1, (float) 0.1, 0);
             // ambientLight(255, 255, 255, 0, 2*buildingRadius, 0);
             // lightSpecular(255, 255, 255);
             lights();
             // specular(falloff);
             fill(66);
             noStroke();
-            translate(0, buildingRadius + 3000, 0);
             shininess(255);
-            sphere(buildingRadius + 2800);
-            // ambientLight(255, 255, 255, 0, buildingRadius + 5000, 0);
-            translate(0, -1 * (buildingRadius + 3000), 0);
-            translate(tran.x, tran.y, tran.z);
+            int gDelta = 500;
+            // for (int x = -buildingRadius; x < buildingRadius; x += gDelta) {
+            // for (int z = -buildingRadius; z < buildingRadius; z += gDelta) {
+            beginShape(QUADS);
+            // stroke(110);
+            vertex(-buildingRadius, y0, -buildingRadius);
+            vertex(-buildingRadius, y0, buildingRadius);
+            vertex(buildingRadius, y0, buildingRadius);
+            vertex(buildingRadius, y0, -buildingRadius);
+            endShape();
+            // }
+            // }
             shininess(0);
             // fill(93);
             // beginShape(QUADS);
@@ -186,8 +199,11 @@ public class Fiddling extends PApplet {
             sendSerial(iout);
             // text("z: "+center.z, 700, 10,
             // 600, 200);
-            blocksize = (int) map(center.z, 800, 2600, 100, 5);
+            blocksize = (int) map(center.z, 400, 2300, 200, 60);
+            cam.setDistance((double) map(center.z, 800, 2200, camDMax, camDMin));
+            // println("camD: "+cam.getDistance());
             buildingRadius = (int) map(userList.size(), 1, 6, 1500, 6000);
+            thetaDelta = (int) map(userList.size(), 1, 6, (float) 3.5, 10);
             tran.y = (int) map(center.y, 0, -180, y0 - 200, y0 + 200);
 
             eimages.render(threshHold, viewers.speed());
@@ -201,31 +217,31 @@ public class Fiddling extends PApplet {
             // tran.y = y0;
             // println("cleared viewers");
         }
+//        if (millis() - cloudTimer > 2) {
+//            cloudDraw();
+//            cloudTimer = millis();
+//        }
         // float[] rotations = cam.getRotations();
         // rotateX(rotations[0]);
         // rotateY(rotations[1]);
         // rotateZ(rotations[2]);
-        // // cloudDraw();
-        // // if (millis() - cloudTimer > 0) {
-        // // cloudTimer = millis();
         // fill(255);
         // stroke(255);
         // float[] pos = cam.getPosition();
-        // text("cam looking here: " + pos[0]+", "+pos[1]+", "+pos[2], 100, 100,
+        // text("speed: " + viewers.speed(), 100, 100,
         // 300, 300);
-        // }
         // image(curImage, 0, 0);
     }
 
     public void track(byte iout) {
-        if (isBlu) {
+        if (false && isBlu) {
             if (abs(iout) > 2) {
                 // rot.x -= iout * .001;
             }
             return;
         }
         if (abs(iout) > 2) {
-            rot.x -= iout * .05;
+            rot.x -= iout * .01;
         }
     }
 
@@ -244,7 +260,7 @@ public class Fiddling extends PApplet {
             }
         }
     }
-
+/*
     public Particle randomParticle() {
         return ((Particle) particles.get((int) random(particles.size())));
     }
@@ -293,7 +309,7 @@ public class Fiddling extends PApplet {
         float[] pos = cam.getPosition();
         globalOffset.addSelf(pos[0], pos[1], pos[2]);
     }
-
+*/
     public void keyPressed() {
         if (key == 'p') {
             println("rot: " + rot.x + ", " + rot.y + ", " + rot.z);
