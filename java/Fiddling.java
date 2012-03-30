@@ -6,13 +6,13 @@ H. Cole Wiley cole@decode72.com
  #SimpleOpenNI@http://code.google.com/p/simple-openni/
  ill get the rest later
  */
+//import processing.core.*;
 import processing.core.*;
 import processing.serial.*;
 //import processing.opengl.*;
 import SimpleOpenNI.*;
 import java.util.Vector;
-//import javax.swing.*;
-//import processing.
+import javax.swing.*;
 import peasy.*;
 import toxi.geom.*;
 
@@ -64,7 +64,7 @@ public class Fiddling extends PApplet {
 		frameRate(25);
 
 		if (NUM_EIMAGES == 6) {
-			thetaDelta = (float) 3.35;
+			thetaDelta = (float) 3.45;
 			theta = (float) 5.27;
 		}
 		// println(gl);
@@ -77,10 +77,10 @@ public class Fiddling extends PApplet {
 		cam.setMaximumDistance(camDMax);
 		cameraCenter = new Vec3D();
 		avg = new Vec3D();
-		globalOffset = new Vec3D(0, 1.f / 5, 2.f / 3);
+		globalOffset = new Vec3D(0,0,0);//1.f / 5, 2.f / 3);
 
 		rot = new PVector();
-		y0 = 0;
+		y0 = 100;
 		tran = new PVector(0, y0, 0);
 
 		// kinect and viewer stuff, as they are related
@@ -102,19 +102,19 @@ public class Fiddling extends PApplet {
 			}
 			println(serial.readString());
 		}
-		dofRatio = 50;
-		neighborhood = 700;
-		speed = 54;
-		viscosity = (float) .2;
-		spread = 140;
-		independence = (float) .45;
-		rebirth = 0;
-		rebirthRadius = 500;
-		turbulence = (float) 1.3;
-		cameraRate = (float) .3;
+		dofRatio = 30;
+		neighborhood = 300;
+		speed = 24;
+		viscosity = (float) .6;
+		spread = 240;
+		independence = (float) .35;
+		rebirth = 100;
+		rebirthRadius = 100;
+		turbulence = (float) 2.4;
+		cameraRate = (float) .4;
 		averageRebirth = true;
 		particles = new Vector();
-		n = 3000;
+		n = 5000;
 		for (int i = 0; i < n; i++)
 			particles.add(new Particle(this));
 
@@ -182,16 +182,16 @@ public class Fiddling extends PApplet {
 			buildingRadius = (int) map(userList.size(), 1, 6, 1100, 5000);
 			// thetaDelta = (int) map(userList.size(), 1, 6, (float) 3.5, 10);
 			tran.y = (int) map(center.y, 0, -180, y0 - 100, y0 + 100);
-			eimages.render(threshHold, viewers.speed());
+			eimages.render(threshHold, (int)(viewers.speed()*1.5));
 		} else {
 			// viewers = new Viewers();
 			viewers.clear();
 			sendSerial((byte) 0);
 		}
-		float[] rotations = cam.getRotations();
-		rotateX(rotations[0]);
-		rotateY(rotations[1]);
-		rotateZ(rotations[2]);
+//		float[] rotations = cam.getRotations();
+//		rotateX(rotations[0]);
+//		rotateY(rotations[1]);
+//		rotateZ(rotations[2]);
 		cloudDraw();
 		sendSerial((byte) 0);
 	}
@@ -320,4 +320,8 @@ public class Fiddling extends PApplet {
 	public void mouseWheel(int delta) {
 		tran.z -= delta * 10;
 	}
+
+        public PImage loadImage(String img){
+          return super.loadImage(img);
+        }
 }

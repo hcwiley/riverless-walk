@@ -56,7 +56,7 @@ class EImage {
                   parent.noStroke();
 //                  parent.stroke(inverted);
                     Cube.drawCube(position[0], position[1], position[2],
-                            parent.blocksize, inverted, parent, blockSpacing);
+                            parent.blocksize, inverted, parent, blockSpacing*2);
                 }
                 else{
                     parent.noStroke();

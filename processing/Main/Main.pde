@@ -5,11 +5,9 @@ import controlP5.*;
 import SimpleOpenNI.*;
 import java.util.Vector;
 import javax.swing.*;
-//import processing.
 import peasy.*;
 import toxi.geom.*;
 
-public class Main {
     public static void main(String args[]) {
         Fiddling theApplet = new Fiddling();
         theApplet.init(); // Needed if overridden in applet
@@ -23,4 +21,3 @@ public class Main {
         System.out.println(theApplet.getSize());
         window.setVisible(true); // Make the window visible
     }
-}

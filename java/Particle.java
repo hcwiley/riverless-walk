@@ -18,7 +18,7 @@ class Particle {
         resetPosition();
         velocity = new Vec3D();
         force = new Vec3D();
-        localOffset = Vec3D.randomVector();
+        localOffset = new Vec3D();//.randomVector();
     }
     void resetPosition() {
         position = Vec3D.randomVector();
@@ -44,17 +44,17 @@ class Particle {
         force.addSelf((float) (parent.noise(position.x / parent.neighborhood
                 + parent.globalOffset.x + localOffset.x * parent.independence,
                 position.y / parent.neighborhood, position.z
-                        / parent.neighborhood) - .5), 
+                        / parent.neighborhood) - .46), 
             (float) (parent.noise(
                 position.x / parent.neighborhood, position.y
                         / parent.neighborhood + parent.globalOffset.y
                         + localOffset.y * parent.independence, position.z
-                        / parent.neighborhood) - .5),
+                        / parent.neighborhood) - .46),
             (float) (parent.noise(
                 position.x / parent.neighborhood, position.y
                         / parent.neighborhood, position.z / parent.neighborhood
                         + parent.globalOffset.z + localOffset.z
-                        * parent.independence) - .5));
+                        * parent.independence) - .46));
     }
 
     void applyViscosityForce() {

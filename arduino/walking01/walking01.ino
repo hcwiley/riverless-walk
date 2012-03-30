@@ -39,7 +39,7 @@ void loop()
         powIn = 0;
         data = 0;
       }
-      powIn = map(abs(data),1, 15, 95, 140);
+      powIn = map(abs(data),1, 15, 105, 150);
   }
   if( dir == 5 ){
     digitalWrite(dir_a, HIGH);  //Set motor direction, 1 low, 2 high
