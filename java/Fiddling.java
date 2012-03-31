@@ -87,6 +87,7 @@ public class Fiddling extends PApplet {
 		kinect = new SimpleOpenNI(this);
 		kinect.enableDepth();
 		kinect.setMirror(true);
+		kinect.enableRGB();
 		kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
 		viewers = new Viewers();
 		userList = new IntVector();
