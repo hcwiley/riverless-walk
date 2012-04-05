@@ -13,3 +13,4 @@ videos/*
 *.mp4
 *.ogg
 *.mpg
+processing/*/application*
