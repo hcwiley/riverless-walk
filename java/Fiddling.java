@@ -56,7 +56,7 @@ public class Fiddling extends PApplet {
 	PVector center;
 
 	boolean noLines = true;
-	boolean isBlu = false;
+	boolean isBlu = true;
 
 	public void setup() {
 		this.size(1024, 768, P3D);
@@ -87,7 +87,6 @@ public class Fiddling extends PApplet {
 		kinect = new SimpleOpenNI(this);
 		kinect.enableDepth();
 		kinect.setMirror(true);
-		kinect.enableRGB();
 		kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_NONE);
 		viewers = new Viewers();
 		userList = new IntVector();
@@ -132,21 +131,10 @@ public class Fiddling extends PApplet {
 		kinect.getUsers(userList);
 		if (userList.size() > 0) {
 			background(19);
-			// lightFalloff(1, (float) 0.1, 0);
-			// ambientLight(255, 255, 255, 0, 2*buildingRadius, 0);
-			// lightSpecular(255, 255, 255);
 			lights();
-			// specular(falloff);
 			fill(66);
 			noStroke();
 			shininess(255);
-			// beginShape(QUADS);
-			// vertex(-2*buildingRadius, y0, -2*buildingRadius);
-			// vertex(-2*buildingRadius, y0, 2*buildingRadius);
-			// vertex(2*buildingRadius, y0, 2*buildingRadius);
-			// vertex(2*buildingRadius, y0, -2*buildingRadius);
-			// endShape();
-			// shininess(0);
 			if (!noLines) {
 				stroke(255, 0, 0);
 				line(-5000, 0, 0, 5000, 0, 0);
@@ -202,7 +190,7 @@ public class Fiddling extends PApplet {
 			if (abs(iout) > 2) {
 				// rot.x -= iout * .001;
 			}
-			return;
+//			return;
 		}
 		if (abs(iout) > 2) {
 			rot.x += iout * .001;
